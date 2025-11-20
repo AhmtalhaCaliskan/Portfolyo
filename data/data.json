@@ -1,0 +1,179 @@
+{
+  "profile": {
+    "name": "Ahmet Alha Çalışkan",
+    "title": "Full Stack Developer & Cybersecurity Enthusiast",
+    "email": "ahmetalhacaliskan@gmail.com",
+    "phone": "+90 (542) 728-8273",
+    "location": "Isparta, TR",
+    "profileImage": "assets/profile.jpg",
+    "bio": "Passionate developer with expertise in web development, mobile applications, and cybersecurity. Always learning and growing."
+  },
+  "education": [
+    {
+      "id": 1,
+      "year": "2017 - 2021",
+      "degree": "Lise",
+      "institution": "Gönen Fen Lisesi",
+      "description": "High school education with focus on science and mathematics"
+    },
+    {
+      "id": 2,
+      "year": "2022 - Günümüz",
+      "degree": "Bilgisayar Mühendisliği",
+      "institution": "İnönü Üniversitesi",
+      "description": "Computer Engineering degree with focus on software development and cybersecurity"
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "name": "Python",
+      "level": 80,
+      "category": "Backend"
+    },
+    {
+      "id": 2,
+      "name": "JavaScript",
+      "level": 60,
+      "category": "Frontend"
+    },
+    {
+      "id": 3,
+      "name": "Java",
+      "level": 60,
+      "category": "Backend"
+    },
+    {
+      "id": 4,
+      "name": "Cybersecurity",
+      "level": 30,
+      "category": "Security"
+    },
+    {
+      "id": 5,
+      "name": "React",
+      "level": 55,
+      "category": "Frontend"
+    },
+    {
+      "id": 6,
+      "name": "Node.js",
+      "level": 65,
+      "category": "Backend"
+    }
+  ],
+  "timeline": [
+    {
+      "id": 1,
+      "year": "2024",
+      "title": "Started University Projects",
+      "description": "Began working on various university projects focusing on web development and cybersecurity.",
+      "type": "education"
+    },
+    {
+      "id": 2,
+      "year": "2023",
+      "title": "First Web Development Project",
+      "description": "Created my first full-stack web application using modern technologies.",
+      "type": "project"
+    },
+    {
+      "id": 3,
+      "year": "2022",
+      "title": "University Admission",
+      "description": "Started Computer Engineering at İnönü University.",
+      "type": "education"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "icon": "fa-code",
+      "title": "Web Development",
+      "description": "Modern teknolojiler ile responsive ve performanslı web siteleri geliştiriyorum.",
+      "features": [
+        "Responsive Tasarım",
+        "Modern Framework'ler",
+        "SEO Optimizasyonu",
+        "Hızlı Performans"
+      ],
+      "color": "primary"
+    },
+    {
+      "id": 2,
+      "icon": "fa-mobile-alt",
+      "title": "Mobile Development",
+      "description": "Cross-platform mobil uygulama geliştirme hizmetleri sunuyorum.",
+      "features": [
+        "iOS & Android",
+        "React Native",
+        "Modern UI/UX",
+        "Native Performance"
+      ],
+      "color": "secondary"
+    },
+    {
+      "id": 3,
+      "icon": "fa-shield-alt",
+      "title": "Cybersecurity",
+      "description": "Güvenlik değerlendirmesi ve implementasyon hizmetleri sağlıyorum.",
+      "features": [
+        "Penetration Testing",
+        "Security Audit",
+        "Vulnerability Assessment",
+        "Security Consultation"
+      ],
+      "color": "accent"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "description": "Full-stack e-commerce web application with payment integration",
+      "image": "assets/projects/project1.jpg",
+      "technologies": ["React", "Node.js", "MongoDB"],
+      "link": "#",
+      "github": "#",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Security Scanner Tool",
+      "description": "Automated vulnerability scanner for web applications",
+      "image": "assets/projects/project2.jpg",
+      "technologies": ["Python", "Flask", "SQLite"],
+      "link": "#",
+      "github": "#",
+      "featured": true
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "Introduction to Cybersecurity",
+      "excerpt": "Learn the basics of cybersecurity and how to protect your applications",
+      "date": "2024-01-15",
+      "readTime": "5 min",
+      "category": "Security",
+      "image": "assets/articles/article1.jpg",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "title": "Modern Web Development Practices",
+      "excerpt": "Best practices for building scalable web applications",
+      "date": "2024-01-10",
+      "readTime": "8 min",
+      "category": "Development",
+      "image": "assets/articles/article2.jpg",
+      "link": "#"
+    }
+  ],
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername",
+    "instagram": "https://instagram.com/yourusername"
+  }
+}

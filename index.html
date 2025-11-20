@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişisel Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Invisible Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="profile-section">
+                <img src="images/proje_pp.png" alt="Profile" class="profile-mini">
+            </div>
+            <div class="theme-section">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="images/proje_pp.png" alt="Profile Picture">
+                </div>
+                <h1 class="hero-title">Kişisel Web Siteme Hoşgeldiniz </h1>
+                <p class="hero-subtitle">Full Stack Developer & Cybersecurity Enthusiast</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Projeleri Görüntüle</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#writings" class="btn btn-secondary">
+                        <span>Yazıları Oku</span>
+                        <i class="fas fa-book"></i>
+                    </a>
+                    <a href="#about" class="btn btn-outline">
+                        <span>Hakkımda</span>
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Hakkımda</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Eğitim</h3>
+                    <div class="education-card">
+                        <span class="year">2017 - 2021</span>
+                        <h4>Lise</h4>
+                        <p>Gönen Fen Lisesi</p>
+                    </div>
+                    <div class="education-card">
+                        <span class="year">2022 - Günümüz</span>
+                        <h4>Bilgisayar Mühendisliği</h4>
+                        <p>İnönü Üniversitesi</p>
+                    </div>
+                </div>
+                <div class="skills-content">
+                    <h3>Yetenekler</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Java</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Cybersecurity</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline Section -->
+    <section id="timeline" class="timeline">
+        <div class="container">
+            <h2 class="section-title">Career Timeline</h2>
+            <div class="timeline-wrapper">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2023</span>
+                        <h3>Event Title</h3>
+                        <p>Description of the event or achievement.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2022</span>
+                        <h3>Event Title</h3>
+                        <p>Description of the event or achievement.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2021</span>
+                        <h3>Event Title</h3>
+                        <p>Description of the event or achievement.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Hizmetlerim</h2>
+            
+            <div class="services-carousel">
+                <button class="carousel-btn prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        
+                        <div class="service-slide">
+                            <div class="service-card-carousel">
+                                <div class="service-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3>Web Development</h3>
+                                <p>Modern teknolojiler ile responsive ve performanslı web siteleri geliştiriyorum.</p>
+                                <ul class="service-features">
+                                    <li><i class="fas fa-check"></i> Responsive Tasarım</li>
+                                    <li><i class="fas fa-check"></i> Modern Framework'ler</li>
+                                    <li><i class="fas fa-check"></i> SEO Optimizasyonu</li>
+                                    <li><i class="fas fa-check"></i> Hızlı Performans</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="service-slide">
+                            <div class="service-card-carousel">
+                                <div class="service-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h3>Mobile Development</h3>
+                                <p>Cross-platform mobil uygulama geliştirme hizmetleri sunuyorum.</p>
+                                <ul class="service-features">
+                                    <li><i class="fas fa-check"></i> iOS & Android</li>
+                                    <li><i class="fas fa-check"></i> React Native</li>
+                                    <li><i class="fas fa-check"></i> Modern UI/UX</li>
+                                    <li><i class="fas fa-check"></i> Native Performance</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="service-slide">
+                            <div class="service-card-carousel">
+                                <div class="service-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Cybersecurity</h3>
+                                <p>Güvenlik değerlendirmesi ve implementasyon hizmetleri sağlıyorum.</p>
+                                <ul class="service-features">
+                                    <li><i class="fas fa-check"></i> Penetration Testing</li>
+                                    <li><i class="fas fa-check"></i> Security Audit</li>
+                                    <li><i class="fas fa-check"></i> Vulnerability Assessment</li>
+                                    <li><i class="fas fa-check"></i> Security Consultation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button class="carousel-btn next-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="carousel-indicators" id="carouselIndicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projelerim</h2>
+            <div class="stats-container">
+                <div class="projects-stats">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="0">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <span class="stat-number" id="projectsCount">0<span class="stat-plus">+</span></span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Tamamlanan Proje</span>
+                    </div>
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <span class="stat-number" id="projectViews">0<span class="stat-plus">+</span></span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Toplam Görüntüleme</span>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Writings Section -->
+    <section id="writings" class="writings">
+        <div class="container">
+            <h2 class="section-title">Yazılarım</h2>
+            <div class="stats-container">
+                <div class="writings-stats">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="0">
+                        <div class="stat-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <span class="stat-number" id="articlesCount">0<span class="stat-plus">+</span></span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Yayınlanan Makale</span>
+                    </div>
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="stat-number" id="viewsCount">0<span class="stat-plus">+</span></span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Toplam Okuyucu</span>
+                    </div>
+                </div>
+            </div>
+            <div class="writings-grid" id="writingsGrid">
+                <!-- Articles will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <!-- Contact Info Cards -->
+            <div class="contact-info-grid">
+                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>ahmetalhacaliskan@gmail.com</p>
+                </div>
+                
+                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>+90 (542) 728-8273</p>
+                </div>
+                
+                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Isparta, TR</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper" data-aos="fade-up" data-aos-delay="300">
+                <form id="contactForm" class="contact-form">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-send">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links-contact" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:ahmetalhacaliskan@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
