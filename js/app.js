@@ -1825,6 +1825,29 @@ function animateValue(element, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
+// Prevent horizontal scroll on mobile
+document.addEventListener('DOMContentLoaded', () => {
+    // Prevent body scroll issues
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflowX = 'hidden';
+    
+    // Check for elements causing overflow
+    function checkOverflow() {
+        const bodyWidth = document.body.offsetWidth;
+        const elements = document.querySelectorAll('*');
+        
+        elements.forEach(el => {
+            if (el.offsetWidth > bodyWidth) {
+                el.style.maxWidth = '100%';
+            }
+        });
+    }
+    
+    // Run on load and resize
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+});
+
 // Initialize on load
 document.addEventListener('DOMContentLoaded', initApp);
 // initCursorEffect(); // Uncomment for custom cursor
