@@ -4,148 +4,364 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kişisel Portfolio</title>
+    <meta name="description" content="Full Stack Developer & Cybersecurity Enthusiast - Portfolio">
+    <meta name="theme-color" content="#7C3AED">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hero-modern.css">
+    <link rel="stylesheet" href="css/about-minimal.css">
+    <link rel="stylesheet" href="css/timeline-horizontal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Top Invisible Bar -->
+    <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-container">
             <div class="profile-section">
                 <img src="images/proje_pp.png" alt="Profile" class="profile-mini">
             </div>
             <div class="theme-section">
-                <button class="theme-toggle" id="themeToggle">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Ana Sayfa</span>
+            </a>
+            <a href="#about" class="mobile-nav-link">
+                <i class="fas fa-user"></i>
+                <span>Hakkımda</span>
+            </a>
+            <a href="#timeline" class="mobile-nav-link">
+                <i class="fas fa-clock"></i>
+                <span>Timeline</span>
+            </a>
+            <a href="#services" class="mobile-nav-link">
+                <i class="fas fa-briefcase"></i>
+                <span>Hizmetler</span>
+            </a>
+            <a href="#projects" class="mobile-nav-link">
+                <i class="fas fa-code"></i>
+                <span>Projeler</span>
+            </a>
+            <a href="#writings" class="mobile-nav-link">
+                <i class="fas fa-pen"></i>
+                <span>Yazılar</span>
+            </a>
+            <a href="#contact" class="mobile-nav-link">
+                <i class="fas fa-envelope"></i>
+                <span>İletişim</span>
+            </a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg-elements">
+            <div class="hero-gradient-orb orb-1"></div>
+            <div class="hero-gradient-orb orb-2"></div>
+            <div class="hero-gradient-orb orb-3"></div>
+        </div>
+
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-image">
-                    <img src="images/proje_pp.png" alt="Profile Picture">
+                <div class="hero-profile-wrapper">
+                    <div class="profile-ring ring-outer"></div>
+                    <div class="profile-ring ring-middle"></div>
+                    <div class="profile-ring ring-inner"></div>
+                    <div class="hero-image">
+                        <img src="images/proje_pp.png" alt="Profile Picture">
+                        <div class="profile-status">
+                            <span class="status-dot"></span>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="hero-title">Kişisel Web Siteme Hoşgeldiniz </h1>
-                <p class="hero-subtitle">Full Stack Developer & Cybersecurity Enthusiast</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>Projeleri Görüntüle</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#writings" class="btn btn-secondary">
-                        <span>Yazıları Oku</span>
-                        <i class="fas fa-book"></i>
-                    </a>
-                    <a href="#about" class="btn btn-outline">
-                        <span>Hakkımda</span>
-                        <i class="fas fa-user"></i>
-                    </a>
+
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line"></span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        <span class="typing-text" id="typingText"></span><span class="cursor-blink">|</span>
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>Projeleri İncele</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#writings" class="btn btn-primary">
+                            <span>Yazıları Oku</span>
+                            <i class="fas fa-book"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-primary">
+                            <span>İletişime Geç</span>
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
+            <span class="scroll-text">Aşağı Kaydır</span>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- About Section - MINIMAL VERSION -->
+    <section id="about" class="about-minimal">
         <div class="container">
             <h2 class="section-title">Hakkımda</h2>
-            <div class="about-grid">
-                <div class="about-content">
-                    <h3>Eğitim</h3>
-                    <div class="education-card">
+            
+            <div class="about-minimal-grid">
+                <!-- Left: Education -->
+                <div class="minimal-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Eğitim</h3>
+                    <div class="education-card minimal">
                         <span class="year">2017 - 2021</span>
                         <h4>Lise</h4>
                         <p>Gönen Fen Lisesi</p>
                     </div>
-                    <div class="education-card">
+                    <div class="education-card minimal">
                         <span class="year">2022 - Günümüz</span>
                         <h4>Bilgisayar Mühendisliği</h4>
                         <p>İnönü Üniversitesi</p>
+                        <span class="badge-ongoing">Devam Ediyor</span>
                     </div>
                 </div>
-                <div class="skills-content">
-                    <h3>Yetenekler</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span>Python</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span>JavaScript</span>
-                            <span>60%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 60%"></div>
+                
+                <!-- Right: Skills Grouped -->
+                <div class="minimal-section">
+                    <h3><i class="fas fa-code"></i> Yetenekler</h3>
+                    
+                    <!-- Programming -->
+                    <div class="skill-group-minimal">
+                        <h4>Programming Languages</h4>
+                        <div class="skill-tags-minimal">
+                            <span class="skill-tag">Python <em>80%</em></span>
+                            <span class="skill-tag">JavaScript <em>60%</em></span>
+                            <span class="skill-tag">Java <em>60%</em></span>
+                            <span class="skill-tag">TypeScript <em>55%</em></span>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span>Java</span>
-                            <span>60%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 60%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span>Cybersecurity</span>
-                            <span>30%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 30%"></div>
+                    
+                    <!-- Web Technologies -->
+                    <div class="skill-group-minimal">
+                        <h4>Web Technologies</h4>
+                        <div class="skill-tags-minimal">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">Vue.js</span>
                         </div>
                     </div>
+                    
+                    <!-- Database & Tools -->
+                    <div class="skill-group-minimal">
+                        <h4>Database & Tools</h4>
+                        <div class="skill-tags-minimal">
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Cybersecurity -->
+                    <div class="skill-group-minimal">
+                        <h4>Cybersecurity <em>30%</em></h4>
+                        <div class="skill-tags-minimal">
+                            <span class="skill-tag">Penetration Testing</span>
+                            <span class="skill-tag">Network Security</span>
+                            <span class="skill-tag">OWASP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certificates (Bottom) -->
+            <div class="certificates-minimal">
+                <h3><i class="fas fa-certificate"></i> Sertifikalar & Başarılar</h3>
+                <div class="cert-list">
+                    <span class="cert-item"><i class="fas fa-award"></i> Full Stack Bootcamp</span>
+                    <span class="cert-item"><i class="fas fa-award"></i> Cybersecurity Basics</span>
+                    <span class="cert-item"><i class="fas fa-award"></i> React Advanced</span>
+                    <span class="cert-item"><i class="fas fa-award"></i> Python Expert</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Career Timeline Section -->
-    <section id="timeline" class="timeline">
+    <!-- Career Timeline Section - HORIZONTAL SCROLL VERSION -->
+    <section id="timeline" class="timeline-horizontal">
         <div class="container">
             <h2 class="section-title">Career Timeline</h2>
-            <div class="timeline-wrapper">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-item timeline-left">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2023</span>
-                        <h3>Event Title</h3>
-                        <p>Description of the event or achievement.</p>
+            
+            <!-- Timeline Navigation -->
+            <div class="timeline-nav">
+                <button class="timeline-nav-btn prev" id="timelinePrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="timeline-nav-btn next" id="timelineNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Timeline Scroll Container -->
+            <div class="timeline-scroll-container" id="timelineScroll">
+                <div class="timeline-track">
+                    
+                    <!-- 2024 -->
+                    <div class="timeline-card">
+                        <div class="timeline-year-badge">2024</div>
+                        <div class="timeline-card-icon work">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-card-content">
+                            <span class="timeline-category work">💼 Work</span>
+                            <h3>Senior Full Stack Developer</h3>
+                            <h4>Tech Company XYZ</h4>
+                            <p>Leading development of microservices architecture and mentoring junior developers.</p>
+                            <div class="timeline-card-skills">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>AWS</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-dot"></div>
-                </div>
-
-                <div class="timeline-item timeline-right">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2022</span>
-                        <h3>Event Title</h3>
-                        <p>Description of the event or achievement.</p>
+                    
+                    <!-- 2023 -->
+                    <div class="timeline-card">
+                        <div class="timeline-year-badge">2023</div>
+                        <div class="timeline-card-icon achievement">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="timeline-card-content">
+                            <span class="timeline-category achievement">🏆 Achievement</span>
+                            <h3>Won Hackathon Competition</h3>
+                            <h4>National Developer Summit</h4>
+                            <p>First place in cybersecurity category with innovative penetration testing tool.</p>
+                            <div class="timeline-award">
+                                <i class="fas fa-award"></i>
+                                <span>1st Place</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-dot"></div>
-                </div>
-
-                <div class="timeline-item timeline-left">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2021</span>
-                        <h3>Event Title</h3>
-                        <p>Description of the event or achievement.</p>
+                    
+                    <!-- 2023 -->
+                    <div class="timeline-card">
+                        <div class="timeline-year-badge">2023</div>
+                        <div class="timeline-card-icon work">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-card-content">
+                            <span class="timeline-category work">💼 Work</span>
+                            <h3>Full Stack Developer</h3>
+                            <h4>Startup ABC</h4>
+                            <p>Developed e-commerce platform handling 10K+ daily users.</p>
+                            <div class="timeline-card-skills">
+                                <span>Vue.js</span>
+                                <span>Python</span>
+                                <span>MongoDB</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-dot"></div>
+                    
+                    <!-- 2022 -->
+                    <div class="timeline-card">
+                        <div class="timeline-year-badge">2022</div>
+                        <div class="timeline-card-icon education">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-card-content">
+                            <span class="timeline-category education">🎓 Education</span>
+                            <h3>Computer Engineering</h3>
+                            <h4>İnönü Üniversitesi</h4>
+                            <p>Pursuing Bachelor's degree with focus on software engineering and cybersecurity.</p>
+                            <div class="timeline-status ongoing">
+                                <i class="fas fa-spinner fa-pulse"></i>
+                                <span>Ongoing</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2022 -->
+                    <div class="timeline-card">
+                        <div class="timeline-year-badge">2022</div>
+                        <div class="timeline-card-icon work">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-card-content">
+                            <span class="timeline-category work">💼 Work</span>
+                            <h3>Software Development Intern</h3>
+                            <h4>Company DEF</h4>
+                            <p>First professional experience in software development.</p>
+                            <div class="timeline-card-skills">
+                                <span>React</span>
+                                <span>JavaScript</span>
+                                <span>REST API</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2021 -->
+                    <div class="timeline-card">
+                        <div class="timeline-year-badge">2021</div>
+                        <div class="timeline-card-icon achievement">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="timeline-card-content">
+                            <span class="timeline-category achievement">🏆 Achievement</span>
+                            <h3>Full Stack Bootcamp</h3>
+                            <h4>Online Academy</h4>
+                            <p>Completed intensive 6-month bootcamp covering modern web technologies.</p>
+                            <div class="timeline-award">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certified</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2021 -->
+                    <div class="timeline-card">
+                        <div class="timeline-year-badge">2017-2021</div>
+                        <div class="timeline-card-icon education">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-card-content">
+                            <span class="timeline-category education">🎓 Education</span>
+                            <h3>High School Diploma</h3>
+                            <h4>Gönen Fen Lisesi</h4>
+                            <p>Graduated with honors. Strong foundation in mathematics and sciences.</p>
+                            <div class="timeline-status completed">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="timeline-scroll-hint">
+                <i class="fas fa-chevron-right"></i>
+                <span>Scroll to see more</span>
             </div>
         </div>
     </section>
@@ -233,7 +449,7 @@
             <h2 class="section-title">Projelerim</h2>
             <div class="stats-container">
                 <div class="projects-stats">
-                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-project-diagram"></i>
                         </div>
@@ -241,7 +457,7 @@
                         <div class="stat-divider"></div>
                         <span class="stat-label">Tamamlanan Proje</span>
                     </div>
-                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-eye"></i>
                         </div>
@@ -263,7 +479,7 @@
             <h2 class="section-title">Yazılarım</h2>
             <div class="stats-container">
                 <div class="writings-stats">
-                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-pen-fancy"></i>
                         </div>
@@ -271,7 +487,7 @@
                         <div class="stat-divider"></div>
                         <span class="stat-label">Yayınlanan Makale</span>
                     </div>
-                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -294,7 +510,7 @@
             
             <!-- Contact Info Cards -->
             <div class="contact-info-grid">
-                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="contact-info-card">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
@@ -302,7 +518,7 @@
                     <p>ahmetalhacaliskan@gmail.com</p>
                 </div>
                 
-                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-info-card">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
@@ -310,7 +526,7 @@
                     <p>+90 (542) 728-8273</p>
                 </div>
                 
-                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-info-card">
                     <div class="contact-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
@@ -320,7 +536,7 @@
             </div>
 
             <!-- Contact Form -->
-            <div class="contact-form-wrapper" data-aos="fade-up" data-aos-delay="300">
+            <div class="contact-form-wrapper">
                 <form id="contactForm" class="contact-form">
                     <input type="text" name="name" placeholder="Name" required>
                     <input type="email" name="email" placeholder="Email" required>
@@ -334,7 +550,7 @@
             </div>
 
             <!-- Social Links -->
-            <div class="social-links-contact" data-aos="fade-up" data-aos-delay="400">
+            <div class="social-links-contact">
                 <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
@@ -362,5 +578,6 @@
     </footer>
 
     <script src="js/app.js"></script>
+    <script src="js/timeline-scroll.js"></script>
 </body>
 </html>
