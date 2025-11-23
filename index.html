@@ -2,364 +2,347 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <title>Kişisel Portfolio</title>
-    <meta name="description" content="Full Stack Developer & Cybersecurity Enthusiast - Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
     <meta name="theme-color" content="#7C3AED">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/hero-modern.css">
-    <link rel="stylesheet" href="css/about-minimal.css">
-    <link rel="stylesheet" href="css/timeline-horizontal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="profile-section">
-                <img src="images/proje_pp.png" alt="Profile" class="profile-mini">
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Profile Logo Top Left -->
+        <div class="logo-wrapper" id="adminLogo">
+            <img src="images/proje_pp.png" alt="Logo" class="logo">
+        </div>
+
+        <!-- Center Content -->
+        <div class="hero-content">
+            <!-- Profile Image with Rings -->
+            <div class="profile-wrapper">
+                <div class="profile-ring ring-outer"></div>
+                <div class="profile-ring ring-middle"></div>
+                <div class="profile-ring ring-inner"></div>
+                <div class="profile-image">
+                    <img src="images/proje_pp.png" alt="Profile">
+                </div>
             </div>
-            <div class="theme-section">
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+
+            <!-- Name Text -->
+            <div class="name-container">
+                <h1 class="name-text" id="nameText"></h1>
+            </div>
+
+            <!-- Typing Text -->
+            <div class="typing-container">
+                <span class="cursor">|</span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <a href="#projects" class="btn btn-primary">
+                    <span>Projeleri İncele</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#blog" class="btn btn-secondary">
+                    <span>Yazıları Oku</span>
+                    <i class="fas fa-book"></i>
+                </a>
+                <a href="#contact" class="btn btn-tertiary">
+                    <span>İletişime Geç</span>
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>AŞAĞI KAYDIR</span>
+            <div class="scroll-icon">
+                <i class="fas fa-arrow-down"></i>
             </div>
         </div>
     </div>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
-    <nav class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-links">
-            <a href="#home" class="mobile-nav-link">
-                <i class="fas fa-home"></i>
-                <span>Ana Sayfa</span>
-            </a>
-            <a href="#about" class="mobile-nav-link">
-                <i class="fas fa-user"></i>
-                <span>Hakkımda</span>
-            </a>
-            <a href="#timeline" class="mobile-nav-link">
-                <i class="fas fa-clock"></i>
-                <span>Timeline</span>
-            </a>
-            <a href="#services" class="mobile-nav-link">
-                <i class="fas fa-briefcase"></i>
-                <span>Hizmetler</span>
-            </a>
-            <a href="#projects" class="mobile-nav-link">
-                <i class="fas fa-code"></i>
-                <span>Projeler</span>
-            </a>
-            <a href="#writings" class="mobile-nav-link">
-                <i class="fas fa-pen"></i>
-                <span>Yazılar</span>
-            </a>
-            <a href="#contact" class="mobile-nav-link">
-                <i class="fas fa-envelope"></i>
-                <span>İletişim</span>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg-elements">
-            <div class="hero-gradient-orb orb-1"></div>
-            <div class="hero-gradient-orb orb-2"></div>
-            <div class="hero-gradient-orb orb-3"></div>
-        </div>
-
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-profile-wrapper">
-                    <div class="profile-ring ring-outer"></div>
-                    <div class="profile-ring ring-middle"></div>
-                    <div class="profile-ring ring-inner"></div>
-                    <div class="hero-image">
-                        <img src="images/proje_pp.png" alt="Profile Picture">
-                        <div class="profile-status">
-                            <span class="status-dot"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="title-line"></span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        <span class="typing-text" id="typingText"></span><span class="cursor-blink">|</span>
-                    </p>
-
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <span>Projeleri İncele</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#writings" class="btn btn-primary">
-                            <span>Yazıları Oku</span>
-                            <i class="fas fa-book"></i>
-                        </a>
-                        <a href="#contact" class="btn btn-primary">
-                            <span>İletişime Geç</span>
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span class="scroll-text">Aşağı Kaydır</span>
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section - MINIMAL VERSION -->
-    <section id="about" class="about-minimal">
-        <div class="container">
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
             <h2 class="section-title">Hakkımda</h2>
             
-            <div class="about-minimal-grid">
-                <!-- Left: Education -->
-                <div class="minimal-section">
-                    <h3><i class="fas fa-graduation-cap"></i> Eğitim</h3>
-                    <div class="education-card minimal">
-                        <span class="year">2017 - 2021</span>
-                        <h4>Lise</h4>
-                        <p>Gönen Fen Lisesi</p>
+            <div class="about-grid">
+                <!-- Education Section -->
+                <div class="about-card education-card">
+                    <div class="card-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Eğitim</h3>
                     </div>
-                    <div class="education-card minimal">
-                        <span class="year">2022 - Günümüz</span>
-                        <h4>Bilgisayar Mühendisliği</h4>
-                        <p>İnönü Üniversitesi</p>
-                        <span class="badge-ongoing">Devam Ediyor</span>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-year">2017 - 2021</span>
+                                <h4>Lise</h4>
+                                <p>Gönen Fen Lisesi</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item active">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-year">2022 - Günümüz</span>
+                                <h4>Bilgisayar Mühendisliği</h4>
+                                <p>İnönü Üniversitesi</p>
+                                <span class="badge-ongoing">DEVAM EDİYOR</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Right: Skills Grouped -->
-                <div class="minimal-section">
-                    <h3><i class="fas fa-code"></i> Yetenekler</h3>
-                    
-                    <!-- Programming -->
-                    <div class="skill-group-minimal">
-                        <h4>Programming Languages</h4>
-                        <div class="skill-tags-minimal">
-                            <span class="skill-tag">Python <em>80%</em></span>
-                            <span class="skill-tag">JavaScript <em>60%</em></span>
-                            <span class="skill-tag">Java <em>60%</em></span>
-                            <span class="skill-tag">TypeScript <em>55%</em></span>
-                        </div>
+
+                <!-- Skills Section -->
+                <div class="about-card skills-card">
+                    <div class="card-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Yetenekler</h3>
                     </div>
                     
-                    <!-- Web Technologies -->
-                    <div class="skill-group-minimal">
-                        <h4>Web Technologies</h4>
-                        <div class="skill-tags-minimal">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">HTML/CSS</span>
-                            <span class="skill-tag">Vue.js</span>
+                    <div class="skills-content">
+                        <!-- Programming Languages -->
+                        <div class="skill-group">
+                            <h4>Programming Languages</h4>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-percent">80%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-percent">60%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Java</span>
+                                    <span class="skill-percent">60%</span>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">TypeScript</span>
+                                    <span class="skill-percent">55%</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Database & Tools -->
-                    <div class="skill-group-minimal">
-                        <h4>Database & Tools</h4>
-                        <div class="skill-tags-minimal">
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Docker</span>
+
+                        <!-- Web Technologies -->
+                        <div class="skill-group">
+                            <h4>Web Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">Vue.js</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Cybersecurity -->
-                    <div class="skill-group-minimal">
-                        <h4>Cybersecurity <em>30%</em></h4>
-                        <div class="skill-tags-minimal">
-                            <span class="skill-tag">Penetration Testing</span>
-                            <span class="skill-tag">Network Security</span>
-                            <span class="skill-tag">OWASP</span>
+
+                        <!-- Database & Tools -->
+                        <div class="skill-group">
+                            <h4>Database & Tools</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+
+                        <!-- Cybersecurity -->
+                        <div class="skill-group">
+                            <h4>Cybersecurity <span class="skill-level">30%</span></h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Penetration Testing</span>
+                                <span class="skill-tag">Network Security</span>
+                                <span class="skill-tag">OWASP</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Certificates (Bottom) -->
-            <div class="certificates-minimal">
-                <h3><i class="fas fa-certificate"></i> Sertifikalar & Başarılar</h3>
-                <div class="cert-list">
-                    <span class="cert-item"><i class="fas fa-award"></i> Full Stack Bootcamp</span>
-                    <span class="cert-item"><i class="fas fa-award"></i> Cybersecurity Basics</span>
-                    <span class="cert-item"><i class="fas fa-award"></i> React Advanced</span>
-                    <span class="cert-item"><i class="fas fa-award"></i> Python Expert</span>
+
+            <!-- Certificates Section -->
+            <div class="certificates-section">
+                <div class="card-header">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Sertifikalar & Başarılar</h3>
+                </div>
+                
+                <div class="certificates-grid">
+                    <div class="cert-card">
+                        <i class="fas fa-award"></i>
+                        <span>Full Stack Bootcamp</span>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-award"></i>
+                        <span>Cybersecurity Basics</span>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-award"></i>
+                        <span>React Advanced</span>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-award"></i>
+                        <span>Python Expert</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Career Timeline Section - HORIZONTAL SCROLL VERSION -->
-    <section id="timeline" class="timeline-horizontal">
-        <div class="container">
+    <!-- Career Timeline Section -->
+    <section id="timeline" class="timeline-section">
+        <div class="timeline-container">
             <h2 class="section-title">Career Timeline</h2>
             
-            <!-- Timeline Navigation -->
+            <!-- Certificates at Top -->
+            <div class="top-certificates">
+                <div class="cert-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Full Stack Bootcamp</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Cybersecurity Basics</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-award"></i>
+                    <span>React Advanced</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Python Expert</span>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
             <div class="timeline-nav">
-                <button class="timeline-nav-btn prev" id="timelinePrev">
+                <button class="nav-btn prev-btn" id="prevBtn">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="timeline-nav-btn next" id="timelineNext">
+                <button class="nav-btn next-btn" id="nextBtn">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-            
-            <!-- Timeline Scroll Container -->
-            <div class="timeline-scroll-container" id="timelineScroll">
-                <div class="timeline-track">
+
+            <!-- Timeline Track -->
+            <div class="timeline-track-wrapper">
+                <div class="timeline-track" id="timelineTrack">
                     
-                    <!-- 2024 -->
-                    <div class="timeline-card">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item-card">
                         <div class="timeline-year-badge">2024</div>
-                        <div class="timeline-card-icon work">
+                        <div class="timeline-icon work-icon">
                             <i class="fas fa-briefcase"></i>
                         </div>
-                        <div class="timeline-card-content">
-                            <span class="timeline-category work">💼 Work</span>
-                            <h3>Senior Full Stack Developer</h3>
-                            <h4>Tech Company XYZ</h4>
-                            <p>Leading development of microservices architecture and mentoring junior developers.</p>
-                            <div class="timeline-card-skills">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>AWS</span>
-                            </div>
+                        <div class="timeline-badge work-badge">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Work</span>
+                        </div>
+                        <h3 class="timeline-title">Senior Full Stack Developer</h3>
+                        <p class="timeline-company">Tech Company XYZ</p>
+                        <p class="timeline-description">Leading development of microservices architecture and mentoring junior developers.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">AWS</span>
                         </div>
                     </div>
-                    
-                    <!-- 2023 -->
-                    <div class="timeline-card">
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item-card">
                         <div class="timeline-year-badge">2023</div>
-                        <div class="timeline-card-icon achievement">
+                        <div class="timeline-icon achievement-icon">
                             <i class="fas fa-trophy"></i>
                         </div>
-                        <div class="timeline-card-content">
-                            <span class="timeline-category achievement">🏆 Achievement</span>
-                            <h3>Won Hackathon Competition</h3>
-                            <h4>National Developer Summit</h4>
-                            <p>First place in cybersecurity category with innovative penetration testing tool.</p>
-                            <div class="timeline-award">
-                                <i class="fas fa-award"></i>
-                                <span>1st Place</span>
-                            </div>
+                        <div class="timeline-badge achievement-badge">
+                            <i class="fas fa-trophy"></i>
+                            <span>Achievement</span>
+                        </div>
+                        <h3 class="timeline-title">Won Hackathon Competition</h3>
+                        <p class="timeline-company">National Developer Summit</p>
+                        <p class="timeline-description">First place in cybersecurity category with innovative penetration testing tool.</p>
+                        <div class="timeline-tags">
+                            <span class="tag-gold">
+                                <i class="fas fa-trophy"></i>
+                                1st Place
+                            </span>
                         </div>
                     </div>
-                    
-                    <!-- 2023 -->
-                    <div class="timeline-card">
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item-card">
                         <div class="timeline-year-badge">2023</div>
-                        <div class="timeline-card-icon work">
+                        <div class="timeline-icon work-icon">
                             <i class="fas fa-briefcase"></i>
                         </div>
-                        <div class="timeline-card-content">
-                            <span class="timeline-category work">💼 Work</span>
-                            <h3>Full Stack Developer</h3>
-                            <h4>Startup ABC</h4>
-                            <p>Developed e-commerce platform handling 10K+ daily users.</p>
-                            <div class="timeline-card-skills">
-                                <span>Vue.js</span>
-                                <span>Python</span>
-                                <span>MongoDB</span>
-                            </div>
+                        <div class="timeline-badge work-badge">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Work</span>
+                        </div>
+                        <h3 class="timeline-title">Full Stack Developer</h3>
+                        <p class="timeline-company">Startup ABC</p>
+                        <p class="timeline-description">Developed e-commerce platform handling 10K+ daily users.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">MongoDB</span>
                         </div>
                     </div>
-                    
-                    <!-- 2022 -->
-                    <div class="timeline-card">
+
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item-card">
                         <div class="timeline-year-badge">2022</div>
-                        <div class="timeline-card-icon education">
+                        <div class="timeline-icon education-icon">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <div class="timeline-card-content">
-                            <span class="timeline-category education">🎓 Education</span>
-                            <h3>Computer Engineering</h3>
-                            <h4>İnönü Üniversitesi</h4>
-                            <p>Pursuing Bachelor's degree with focus on software engineering and cybersecurity.</p>
-                            <div class="timeline-status ongoing">
-                                <i class="fas fa-spinner fa-pulse"></i>
-                                <span>Ongoing</span>
-                            </div>
+                        <div class="timeline-badge education-badge">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Education</span>
+                        </div>
+                        <h3 class="timeline-title">Started Computer Engineering</h3>
+                        <p class="timeline-company">İnönü Üniversitesi</p>
+                        <p class="timeline-description">Currently pursuing degree with focus on software development and cybersecurity.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">CS</span>
+                            <span class="tag">Software</span>
+                            <span class="tag">Security</span>
                         </div>
                     </div>
-                    
-                    <!-- 2022 -->
-                    <div class="timeline-card">
-                        <div class="timeline-year-badge">2022</div>
-                        <div class="timeline-card-icon work">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <div class="timeline-card-content">
-                            <span class="timeline-category work">💼 Work</span>
-                            <h3>Software Development Intern</h3>
-                            <h4>Company DEF</h4>
-                            <p>First professional experience in software development.</p>
-                            <div class="timeline-card-skills">
-                                <span>React</span>
-                                <span>JavaScript</span>
-                                <span>REST API</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 2021 -->
-                    <div class="timeline-card">
+
+                    <!-- Timeline Item 5 -->
+                    <div class="timeline-item-card">
                         <div class="timeline-year-badge">2021</div>
-                        <div class="timeline-card-icon achievement">
-                            <i class="fas fa-certificate"></i>
+                        <div class="timeline-icon achievement-icon">
+                            <i class="fas fa-trophy"></i>
                         </div>
-                        <div class="timeline-card-content">
-                            <span class="timeline-category achievement">🏆 Achievement</span>
-                            <h3>Full Stack Bootcamp</h3>
-                            <h4>Online Academy</h4>
-                            <p>Completed intensive 6-month bootcamp covering modern web technologies.</p>
-                            <div class="timeline-award">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certified</span>
-                            </div>
+                        <div class="timeline-badge achievement-badge">
+                            <i class="fas fa-trophy"></i>
+                            <span>Achievement</span>
                         </div>
-                    </div>
-                    
-                    <!-- 2021 -->
-                    <div class="timeline-card">
-                        <div class="timeline-year-badge">2017-2021</div>
-                        <div class="timeline-card-icon education">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <div class="timeline-card-content">
-                            <span class="timeline-category education">🎓 Education</span>
-                            <h3>High School Diploma</h3>
-                            <h4>Gönen Fen Lisesi</h4>
-                            <p>Graduated with honors. Strong foundation in mathematics and sciences.</p>
-                            <div class="timeline-status completed">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Completed</span>
-                            </div>
+                        <h3 class="timeline-title">Graduated High School</h3>
+                        <p class="timeline-company">Gönen Fen Lisesi</p>
+                        <p class="timeline-description">Completed science high school with honors and strong foundation in mathematics.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Science</span>
+                            <span class="tag">Math</span>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
-            
+
             <!-- Scroll Indicator -->
-            <div class="timeline-scroll-hint">
+            <div class="scroll-more">
                 <i class="fas fa-chevron-right"></i>
                 <span>Scroll to see more</span>
             </div>
@@ -367,182 +350,795 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
+    <section id="services" class="services-section">
+        <div class="services-container">
+            <!-- Scroll to see more indicator at top -->
+            <div class="scroll-indicator-top">
+                <i class="fas fa-chevron-right"></i>
+                <span>Scroll to see more</span>
+            </div>
+
             <h2 class="section-title">Hizmetlerim</h2>
-            
-            <div class="services-carousel">
-                <button class="carousel-btn prev-btn" id="prevBtn">
+
+            <!-- Navigation Arrows -->
+            <div class="services-nav">
+                <button class="service-nav-btn prev" id="servicePrevBtn">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                
-                <div class="carousel-container">
-                    <div class="carousel-track" id="carouselTrack">
-                        
-                        <div class="service-slide">
-                            <div class="service-card-carousel">
-                                <div class="service-icon">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <h3>Web Development</h3>
-                                <p>Modern teknolojiler ile responsive ve performanslı web siteleri geliştiriyorum.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Responsive Tasarım</li>
-                                    <li><i class="fas fa-check"></i> Modern Framework'ler</li>
-                                    <li><i class="fas fa-check"></i> SEO Optimizasyonu</li>
-                                    <li><i class="fas fa-check"></i> Hızlı Performans</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="service-slide">
-                            <div class="service-card-carousel">
-                                <div class="service-icon">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <h3>Mobile Development</h3>
-                                <p>Cross-platform mobil uygulama geliştirme hizmetleri sunuyorum.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> iOS & Android</li>
-                                    <li><i class="fas fa-check"></i> React Native</li>
-                                    <li><i class="fas fa-check"></i> Modern UI/UX</li>
-                                    <li><i class="fas fa-check"></i> Native Performance</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="service-slide">
-                            <div class="service-card-carousel">
-                                <div class="service-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <h3>Cybersecurity</h3>
-                                <p>Güvenlik değerlendirmesi ve implementasyon hizmetleri sağlıyorum.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Penetration Testing</li>
-                                    <li><i class="fas fa-check"></i> Security Audit</li>
-                                    <li><i class="fas fa-check"></i> Vulnerability Assessment</li>
-                                    <li><i class="fas fa-check"></i> Security Consultation</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <button class="carousel-btn next-btn" id="nextBtn">
+                <button class="service-nav-btn next" id="serviceNextBtn">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
 
-            <div class="carousel-indicators" id="carouselIndicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
+            <!-- Services Slider -->
+            <div class="services-slider-wrapper">
+                <div class="services-slider" id="servicesSlider">
+                    
+                    <!-- Service Card 1: Web Development -->
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon-bg"></div>
+                            <i class="fas fa-code service-icon"></i>
+                        </div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-description">Modern teknolojiler ile responsive ve performanslı web siteleri geliştiriyorum.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Responsive Tasarım</li>
+                            <li><i class="fas fa-check"></i> Modern Framework'ler</li>
+                            <li><i class="fas fa-check"></i> SEO Optimizasyonu</li>
+                            <li><i class="fas fa-check"></i> Hızlı Performans</li>
+                        </ul>
+                        <div class="service-tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 2: Mobile Development -->
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon-bg"></div>
+                            <i class="fas fa-mobile-alt service-icon"></i>
+                        </div>
+                        <h3 class="service-title">Mobile Development</h3>
+                        <p class="service-description">Cross-platform mobil uygulamalar ile her cihazda mükemmel deneyim sunuyorum.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> iOS & Android</li>
+                            <li><i class="fas fa-check"></i> Native Performance</li>
+                            <li><i class="fas fa-check"></i> User-Friendly UI/UX</li>
+                            <li><i class="fas fa-check"></i> Push Notifications</li>
+                        </ul>
+                        <div class="service-tech-tags">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Flutter</span>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 3: Backend Development -->
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon-bg"></div>
+                            <i class="fas fa-server service-icon"></i>
+                        </div>
+                        <h3 class="service-title">Backend Development</h3>
+                        <p class="service-description">Güvenli, ölçeklenebilir ve performanslı backend sistemleri geliştiriyorum.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> RESTful API</li>
+                            <li><i class="fas fa-check"></i> Database Design</li>
+                            <li><i class="fas fa-check"></i> Authentication</li>
+                            <li><i class="fas fa-check"></i> Cloud Integration</li>
+                        </ul>
+                        <div class="service-tech-tags">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 4: Cybersecurity -->
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon-bg"></div>
+                            <i class="fas fa-shield-alt service-icon"></i>
+                        </div>
+                        <h3 class="service-title">Cybersecurity</h3>
+                        <p class="service-description">Güvenlik testleri ve penetrasyon testleri ile sistemlerinizi koruyorum.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Penetration Testing</li>
+                            <li><i class="fas fa-check"></i> Security Audits</li>
+                            <li><i class="fas fa-check"></i> Vulnerability Assessment</li>
+                            <li><i class="fas fa-check"></i> OWASP Standards</li>
+                        </ul>
+                        <div class="service-tech-tags">
+                            <span class="tech-tag">Kali Linux</span>
+                            <span class="tech-tag">Metasploit</span>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 5: UI/UX Design -->
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon-bg"></div>
+                            <i class="fas fa-palette service-icon"></i>
+                        </div>
+                        <h3 class="service-title">UI/UX Design</h3>
+                        <p class="service-description">Kullanıcı odaklı, modern ve etkileyici arayüz tasarımları oluşturuyorum.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> User Research</li>
+                            <li><i class="fas fa-check"></i> Wireframing</li>
+                            <li><i class="fas fa-check"></i> Prototyping</li>
+                            <li><i class="fas fa-check"></i> Visual Design</li>
+                        </ul>
+                        <div class="service-tech-tags">
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">Adobe XD</span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
+            <!-- Dots Navigation -->
+            <div class="services-dots" id="servicesDots"></div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
+    <section id="projects" class="projects-section">
+        <div class="projects-container">
             <h2 class="section-title">Projelerim</h2>
-            <div class="stats-container">
-                <div class="projects-stats">
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <span class="stat-number" id="projectsCount">0<span class="stat-plus">+</span></span>
-                        <div class="stat-divider"></div>
-                        <span class="stat-label">Tamamlanan Proje</span>
+
+            <!-- Stats Cards -->
+            <div class="project-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <span class="stat-number" id="projectViews">0<span class="stat-plus">+</span></span>
-                        <div class="stat-divider"></div>
-                        <span class="stat-label">Toplam Görüntüleme</span>
+                    <div class="stat-number" data-target="0">0</div>
+                    <div class="stat-label">TAMAMLANAN PROJE</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
                     </div>
+                    <div class="stat-number" data-target="0">0</div>
+                    <div class="stat-label">TOPLAM GÖRÜNTÜLEME</div>
                 </div>
             </div>
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be loaded dynamically -->
+
+            <!-- Filter Buttons -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
             </div>
+
+            <!-- Projects Navigation -->
+            <div class="projects-nav">
+                <button class="project-nav-btn prev" id="projectPrevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="project-nav-btn next" id="projectNextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Projects Slider -->
+            <div class="projects-slider-wrapper">
+                <div class="projects-slider" id="projectsSlider">
+                
+                <!-- Project Card 1 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/7c3aed/ffffff?text=E-Commerce+Platform" alt="E-Commerce Platform">
+                        <div class="project-overlay">
+                            <button class="project-btn preview-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>Önizleme</span>
+                            </button>
+                            <button class="project-btn github-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-code"></i>
+                            <span>Web Development</span>
+                        </div>
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">Modern ve kullanıcı dostu e-ticaret platformu. Ödeme sistemi, admin paneli ve gerçek zamanlı stok takibi.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">MongoDB</span>
+                            <span class="tech-badge">Stripe</span>
+                        </div>
+                        <div class="project-stats-mini">
+                            <div class="stat-mini">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-eye"></i>
+                                <span>2.5K</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-code-branch"></i>
+                                <span>45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card" data-category="mobile">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/9333ea/ffffff?text=Fitness+Tracker+App" alt="Fitness Tracker">
+                        <div class="project-overlay">
+                            <button class="project-btn preview-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>Önizleme</span>
+                            </button>
+                            <button class="project-btn github-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile App</span>
+                        </div>
+                        <h3 class="project-title">Fitness Tracker App</h3>
+                        <p class="project-description">iOS ve Android için cross-platform fitness uygulaması. Egzersiz takibi, kalori hesaplama ve sosyal özellikler.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">React Native</span>
+                            <span class="tech-badge">Firebase</span>
+                            <span class="tech-badge">Redux</span>
+                        </div>
+                        <div class="project-stats-mini">
+                            <div class="stat-mini">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-download"></i>
+                                <span>10K+</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-users"></i>
+                                <span>3.2K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card" data-category="backend">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/6d28d9/ffffff?text=RESTful+API+Service" alt="API Service">
+                        <div class="project-overlay">
+                            <button class="project-btn preview-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>Önizleme</span>
+                            </button>
+                            <button class="project-btn github-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-server"></i>
+                            <span>Backend</span>
+                        </div>
+                        <h3 class="project-title">RESTful API Service</h3>
+                        <p class="project-description">Ölçeklenebilir ve güvenli RESTful API servisi. JWT authentication, rate limiting ve comprehensive documentation.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Express</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">Docker</span>
+                        </div>
+                        <div class="project-stats-mini">
+                            <div class="stat-mini">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-server"></i>
+                                <span>99.9%</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-bolt"></i>
+                                <span>Fast</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="project-card" data-category="cybersecurity">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/7c3aed/ffffff?text=Security+Scanner+Tool" alt="Security Scanner">
+                        <div class="project-overlay">
+                            <button class="project-btn preview-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>Önizleme</span>
+                            </button>
+                            <button class="project-btn github-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Cybersecurity</span>
+                        </div>
+                        <h3 class="project-title">Security Scanner Tool</h3>
+                        <p class="project-description">Otomatik güvenlik açığı tarama aracı. OWASP Top 10 kontrolleri, detaylı raporlama ve öneriler.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Nmap</span>
+                            <span class="tech-badge">OWASP</span>
+                        </div>
+                        <div class="project-stats-mini">
+                            <div class="stat-mini">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-bug"></i>
+                                <span>200+</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Safe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/9333ea/ffffff?text=Portfolio+Website" alt="Portfolio">
+                        <div class="project-overlay">
+                            <button class="project-btn preview-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>Önizleme</span>
+                            </button>
+                            <button class="project-btn github-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-code"></i>
+                            <span>Web Development</span>
+                        </div>
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-description">Modern ve interaktif portfolio websitesi. Dark/Light tema, smooth animasyonlar ve responsive tasarım.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <div class="project-stats-mini">
+                            <div class="stat-mini">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-eye"></i>
+                                <span>1.8K</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-heart"></i>
+                                <span>250</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/6d28d9/ffffff?text=Task+Management+System" alt="Task Manager">
+                        <div class="project-overlay">
+                            <button class="project-btn preview-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>Önizleme</span>
+                            </button>
+                            <button class="project-btn github-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-code"></i>
+                            <span>Web Development</span>
+                        </div>
+                        <h3 class="project-title">Task Management System</h3>
+                        <p class="project-description">Takım çalışması için task yönetim sistemi. Kanban board, real-time collaboration ve time tracking.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Vue.js</span>
+                            <span class="tech-badge">Socket.io</span>
+                            <span class="tech-badge">MySQL</span>
+                        </div>
+                        <div class="project-stats-mini">
+                            <div class="stat-mini">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-users"></i>
+                                <span>850</span>
+                            </div>
+                            <div class="stat-mini">
+                                <i class="fas fa-tasks"></i>
+                                <span>5K+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="projects-dots" id="projectsDots"></div>
         </div>
     </section>
 
-    <!-- Writings Section -->
-    <section id="writings" class="writings">
-        <div class="container">
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section">
+        <div class="blog-container">
             <h2 class="section-title">Yazılarım</h2>
-            <div class="stats-container">
-                <div class="writings-stats">
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-pen-fancy"></i>
-                        </div>
-                        <span class="stat-number" id="articlesCount">0<span class="stat-plus">+</span></span>
-                        <div class="stat-divider"></div>
-                        <span class="stat-label">Yayınlanan Makale</span>
+
+            <!-- Blog Stats Cards -->
+            <div class="blog-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <span class="stat-number" id="viewsCount">0<span class="stat-plus">+</span></span>
-                        <div class="stat-divider"></div>
-                        <span class="stat-label">Toplam Okuyucu</span>
+                    <div class="stat-number" data-target="0">0</div>
+                    <div class="stat-label">TOPLAM YAZI</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
                     </div>
+                    <div class="stat-number" data-target="0">0</div>
+                    <div class="stat-label">TOPLAM OKUNMA</div>
                 </div>
             </div>
-            <div class="writings-grid" id="writingsGrid">
-                <!-- Articles will be loaded dynamically -->
+
+            <!-- Blog Filter Buttons -->
+            <div class="blog-filters">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="tutorial">Tutorial</button>
+                <button class="filter-btn" data-filter="career">Career</button>
             </div>
+
+            <!-- Blog Navigation -->
+            <div class="blog-nav">
+                <button class="blog-nav-btn prev" id="blogPrevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="blog-nav-btn next" id="blogNextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Blog Slider -->
+            <div class="blog-slider-wrapper">
+                <div class="blog-slider" id="blogSlider">
+                    
+                    <!-- Blog Card 1 -->
+                    <div class="blog-card" data-category="web">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/600x400/7c3aed/ffffff?text=React+Hooks+Guide" alt="React Hooks">
+                            <div class="blog-date">
+                                <span class="day">15</span>
+                                <span class="month">NOV</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">
+                                <i class="fas fa-code"></i>
+                                <span>Web Development</span>
+                            </div>
+                            <h3 class="blog-title">React Hooks ile Modern Web Geliştirme</h3>
+                            <p class="blog-excerpt">React Hooks kullanarak daha temiz ve okunabilir kod yazmanın yollarını keşfedin. useState, useEffect ve custom hooks...</p>
+                            <div class="blog-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>8 dk okuma</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>2.5K</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>245</span>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">
+                                <span>Devamını Oku</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Blog Card 2 -->
+                    <div class="blog-card" data-category="security">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/600x400/9333ea/ffffff?text=Cybersecurity+Basics" alt="Cybersecurity">
+                            <div class="blog-date">
+                                <span class="day">10</span>
+                                <span class="month">NOV</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Security</span>
+                            </div>
+                            <h3 class="blog-title">Web Uygulamalarında Güvenlik İpuçları</h3>
+                            <p class="blog-excerpt">OWASP Top 10 güvenlik açıklarından korunma yöntemleri ve best practices. XSS, CSRF, SQL Injection gibi saldırılara karşı...</p>
+                            <div class="blog-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>12 dk okuma</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>3.2K</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>380</span>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">
+                                <span>Devamını Oku</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Blog Card 3 -->
+                    <div class="blog-card" data-category="tutorial">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/600x400/6d28d9/ffffff?text=Docker+Tutorial" alt="Docker">
+                            <div class="blog-date">
+                                <span class="day">05</span>
+                                <span class="month">NOV</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Tutorial</span>
+                            </div>
+                            <h3 class="blog-title">Docker ile Container Teknolojisine Giriş</h3>
+                            <p class="blog-excerpt">Docker nedir, neden kullanmalıyız? Container yapısını anlamak ve Docker compose ile multi-container uygulamalar oluşturma...</p>
+                            <div class="blog-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>15 dk okuma</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>4.1K</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>520</span>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">
+                                <span>Devamını Oku</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Blog Card 4 -->
+                    <div class="blog-card" data-category="web">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/600x400/7c3aed/ffffff?text=Node.js+Performance" alt="Node.js">
+                            <div class="blog-date">
+                                <span class="day">01</span>
+                                <span class="month">NOV</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">
+                                <i class="fas fa-code"></i>
+                                <span>Web Development</span>
+                            </div>
+                            <h3 class="blog-title">Node.js Performance Optimizasyonu</h3>
+                            <p class="blog-excerpt">Node.js uygulamalarınızı hızlandırmak için clustering, caching ve profiling teknikleri. V8 engine optimizasyonları...</p>
+                            <div class="blog-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10 dk okuma</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>2.8K</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>310</span>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">
+                                <span>Devamını Oku</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Blog Card 5 -->
+                    <div class="blog-card" data-category="career">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/600x400/9333ea/ffffff?text=Developer+Career" alt="Career">
+                            <div class="blog-date">
+                                <span class="day">28</span>
+                                <span class="month">OCT</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Career</span>
+                            </div>
+                            <h3 class="blog-title">Junior Developer'dan Senior'a Yolculuk</h3>
+                            <p class="blog-excerpt">Yazılım kariyerinde ilerlemek için gerekli soft skills, teknik bilgiler ve networking stratejileri. Mentorluk ve sürekli öğrenme...</p>
+                            <div class="blog-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>7 dk okuma</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>5.5K</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>680</span>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">
+                                <span>Devamını Oku</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Blog Card 6 -->
+                    <div class="blog-card" data-category="tutorial">
+                        <div class="blog-image">
+                            <img src="https://via.placeholder.com/600x400/6d28d9/ffffff?text=Git+Workflow" alt="Git">
+                            <div class="blog-date">
+                                <span class="day">20</span>
+                                <span class="month">OCT</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-category">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Tutorial</span>
+                            </div>
+                            <h3 class="blog-title">Git ve GitHub Best Practices</h3>
+                            <p class="blog-excerpt">Etkili git workflow stratejileri, branch yönetimi ve collaborative development. Pull request ve code review süreçleri...</p>
+                            <div class="blog-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>9 dk okuma</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>3.7K</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>425</span>
+                                </div>
+                            </div>
+                            <button class="read-more-btn">
+                                <span>Devamını Oku</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="blog-dots" id="blogDots"></div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
             <h2 class="section-title">Get In Touch</h2>
-            
+            <p class="contact-subtitle">Projeniz için benimle iletişime geçin. Birlikte harika şeyler yaratalım!</p>
+
             <!-- Contact Info Cards -->
             <div class="contact-info-grid">
                 <div class="contact-info-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                    <div class="contact-icon-wrapper">
+                        <div class="contact-icon-bg"></div>
+                        <i class="fas fa-envelope contact-icon"></i>
                     </div>
-                    <h3>Email</h3>
-                    <p>ahmetalhacaliskan@gmail.com</p>
+                    <h3 class="contact-info-title">Email</h3>
+                    <a href="mailto:ahmetalhacaliskan@gmail.com" class="contact-info-text">ahmetalhacaliskan@gmail.com</a>
                 </div>
-                
+
                 <div class="contact-info-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+                    <div class="contact-icon-wrapper">
+                        <div class="contact-icon-bg"></div>
+                        <i class="fas fa-phone contact-icon"></i>
                     </div>
-                    <h3>Phone</h3>
-                    <p>+90 (542) 728-8273</p>
+                    <h3 class="contact-info-title">Phone</h3>
+                    <a href="tel:+905421728273" class="contact-info-text">+90 (542) 728-8273</a>
                 </div>
-                
+
                 <div class="contact-info-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-icon-wrapper">
+                        <div class="contact-icon-bg"></div>
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
                     </div>
-                    <h3>Location</h3>
-                    <p>Isparta, TR</p>
+                    <h3 class="contact-info-title">Location</h3>
+                    <p class="contact-info-text">Isparta, TR</p>
                 </div>
             </div>
 
             <!-- Contact Form -->
             <div class="contact-form-wrapper">
-                <form id="contactForm" class="contact-form">
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="text" name="subject" placeholder="Subject" required>
-                    <textarea name="message" placeholder="Message" rows="5" required></textarea>
-                    <button type="submit" class="btn-send">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Name" required>
+                        <label for="name" class="form-label">İsim</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Email" required>
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject" required>
+                        <label for="subject" class="form-label">Konu</label>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" name="message" class="form-input form-textarea" placeholder="Message" rows="5" required></textarea>
+                        <label for="message" class="form-label">Mesaj</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
                         <span>Send Message</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
@@ -550,34 +1146,31 @@
             </div>
 
             <!-- Social Links -->
-            <div class="social-links-contact">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <div class="social-links">
+                <a href="https://github.com" target="_blank" class="social-link" aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
+                <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" title="Twitter">
+                <a href="https://twitter.com" target="_blank" class="social-link" aria-label="Twitter">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" title="Instagram">
+                <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="mailto:ahmetalhacaliskan@gmail.com" title="Email">
+                <a href="mailto:ahmetalhacaliskan@gmail.com" class="social-link" aria-label="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-text">
+                <p>© 2024 Portfolio. Designed & Developed with <i class="fas fa-heart"></i> by <span class="gradient-text">Ahmet Talha</span></p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Tüm hakları saklıdır.</p>
-        </div>
-    </footer>
-
-    <script src="js/app.js"></script>
-    <script src="js/timeline-scroll.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

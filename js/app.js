@@ -13,7 +13,6 @@ async function initApp() {
         
         // Initialize all components
         initTheme();
-        initMobileMenu();
         initScrollEffects();
         initNavigation();
         initHero();
@@ -1395,36 +1394,7 @@ function hideLoadingScreen() {
     });
 }
 
-// 2. MOBILE HAMBURGER MENU
-function initMobileMenu() {
-    // Mobile Menu Toggle
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-        mobileNavBackdrop.classList.toggle('active');
-        mobileMenuToggle.classList.toggle('active');
-    });
-
-    mobileNavBackdrop.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        mobileNavBackdrop.classList.remove('active');
-        mobileMenuToggle.classList.remove('active');
-    });
-
-    // Close mobile menu on link click
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            mobileNavBackdrop.classList.remove('active');
-            mobileMenuToggle.classList.remove('active');
-        });
-    });
-}
-
-// 3. CUSTOM CURSOR
+// 2. CUSTOM CURSOR
 function initCustomCursor() {
     // Only on desktop
     if (window.innerWidth < 768) return;
@@ -1826,178 +1796,501 @@ function animateValue(element, start, end, duration) {
 }
 
 // Prevent horizontal scroll on mobile
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.style.overflowX = 'hidden';
-    document.documentElement.style.overflowX = 'hidden';
-    
-    // Fix iOS button tap delay
-    document.addEventListener('touchstart', function() {}, {passive: true});
-    
-    // Prevent double-tap zoom on buttons
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-        const now = Date.now();
-        if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-        }
-        lastTouchEnd = now;
-    }, false);
-    
-    // Enhanced button click handlers for mobile
-    enhanceMobileButtons();
+document.body.style.overflowX = 'hidden';
+document.documentElement.style.overflowX = 'hidden';
+
+// Fix iOS button tap delay
+document.addEventListener('touchstart', function() {}, {passive: true});
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+
+const currentTheme = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
+
+function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+}
+
+function toggleTheme() {
+    const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
+}
+
+// Theme toggle - both click and touch
+themeToggle.addEventListener('click', toggleTheme);
+themeToggle.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    toggleTheme();
 });
 
-// Enhanced Mobile Button Handling
-function enhanceMobileButtons() {
-    // All buttons
-    const buttons = document.querySelectorAll('button, .btn, a.btn, .carousel-btn, .timeline-nav-btn');
+// Mobile Menu Toggle
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+
+function toggleMobileMenu() {
+    mobileNav.classList.toggle('active');
+    mobileNavBackdrop.classList.toggle('active');
+    mobileMenuToggle.classList.toggle('active');
+}
+
+mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+mobileMenuToggle.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMobileMenu();
+});
+
+mobileNavBackdrop.addEventListener('click', toggleMobileMenu);
+mobileNavBackdrop.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    toggleMobileMenu();
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    function handleNavClick(e) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        const target = document.querySelector(href);
+        
+        // Close menu
+        mobileNav.classList.remove('active');
+        mobileNavBackdrop.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        
+        // Smooth scroll
+        if (target) {
+            setTimeout(() => {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 300);
+        }
+    }
     
-    buttons.forEach(button => {
-        // Add active class on touch
-        button.addEventListener('touchstart', function() {
+    link.addEventListener('click', handleNavClick);
+    link.addEventListener('touchend', handleNavClick);
+});
+
+// Typing Effect
+const typingTexts = [
+    'Full Stack Developer',
+    'Cybersecurity Enthusiast',
+    'Problem Solver',
+    'Tech Innovator'
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.getElementById('typingText');
+
+function type() {
+    if (!typingElement) return;
+    
+    const currentText = typingTexts[textIndex];
+    
+    if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+    }
+    
+    if (!isDeleting && charIndex === currentText.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+        return;
+    }
+    
+    if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % typingTexts.length;
+    }
+    
+    const speed = isDeleting ? 50 : 100;
+    setTimeout(type, speed);
+}
+
+setTimeout(type, 1000);
+
+// Hero Title Animation
+const heroTitle = document.querySelector('.hero-title .title-line');
+if (heroTitle) {
+    heroTitle.textContent = 'Ahmet Alha Çalışkan';
+}
+
+// Services Carousel
+const carouselTrack = document.getElementById('carouselTrack');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const indicators = document.querySelectorAll('.indicator');
+
+let currentSlide = 0;
+const totalSlides = document.querySelectorAll('.service-slide').length;
+let autoPlayInterval;
+
+function updateCarousel() {
+    if (!carouselTrack) return;
+    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+}
+
+function prevSlide() {
+    currentSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+    updateCarousel();
+}
+
+function startAutoPlay() {
+    autoPlayInterval = setInterval(nextSlide, 5000);
+}
+
+function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    startAutoPlay();
+}
+
+// Carousel prev button
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
+    });
+    
+    prevBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        prevSlide();
+        resetAutoPlay();
+    });
+}
+
+// Carousel next button
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
+    });
+    
+    nextBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        nextSlide();
+        resetAutoPlay();
+    });
+}
+
+// Carousel indicators
+indicators.forEach((indicator, index) => {
+    function setSlide(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        currentSlide = index;
+        updateCarousel();
+        resetAutoPlay();
+    }
+    
+    indicator.addEventListener('click', setSlide);
+    indicator.addEventListener('touchend', setSlide);
+});
+
+// Touch/Swipe support for carousel
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (carouselTrack) {
+    carouselTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carouselTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+        resetAutoPlay();
+    }
+}
+
+startAutoPlay();
+
+// Pause autoplay when page is hidden
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        clearInterval(autoPlayInterval);
+    } else {
+        startAutoPlay();
+    }
+});
+
+// Projects Data
+const projects = [
+    {
+        title: 'E-Commerce Platform',
+        description: 'Modern ve responsive e-ticaret sitesi',
+        image: 'https://via.placeholder.com/400x250/7C3AED/ffffff?text=E-Commerce',
+        technologies: ['React', 'Node.js', 'MongoDB'],
+        github: 'https://github.com',
+        demo: 'https://example.com'
+    },
+    {
+        title: 'Security Scanner',
+        description: 'Otomatik güvenlik tarama aracı',
+        image: 'https://via.placeholder.com/400x250/7C3AED/ffffff?text=Security',
+        technologies: ['Python', 'Flask', 'SQLite'],
+        github: 'https://github.com',
+        demo: 'https://example.com'
+    },
+    {
+        title: 'Portfolio Website',
+        description: 'Kişisel portfolio web sitesi',
+        image: 'https://via.placeholder.com/400x250/7C3AED/ffffff?text=Portfolio',
+        technologies: ['HTML', 'CSS', 'JavaScript'],
+        github: 'https://github.com',
+        demo: 'https://example.com'
+    }
+];
+
+// Load Projects
+function loadProjects() {
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (!projectsGrid) return;
+    
+    projectsGrid.innerHTML = projects.map(project => `
+        <div class="project-card">
+            <div class="project-image">
+                <img src="${project.image}" alt="${project.title}">
+                <div class="project-overlay">
+                    <a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <div class="project-technologies">
+                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Articles Data
+const articles = [
+    {
+        title: 'Modern Web Development Trends 2024',
+        excerpt: 'Web geliştirme dünyasındaki son trendler ve teknolojiler',
+        date: '15 Mart 2024',
+        readTime: '5 dk',
+        category: 'Web Development',
+        link: '#'
+    },
+    {
+        title: 'Cybersecurity Best Practices',
+        excerpt: 'Siber güvenlikte dikkat edilmesi gereken önemli noktalar',
+        date: '10 Mart 2024',
+        readTime: '7 dk',
+        category: 'Security',
+        link: '#'
+    },
+    {
+        title: 'React Performance Optimization',
+        excerpt: 'React uygulamalarında performans optimizasyonu teknikleri',
+        date: '5 Mart 2024',
+        readTime: '6 dk',
+        category: 'React',
+        link: '#'
+    }
+];
+
+// Load Articles
+function loadArticles() {
+    const writingsGrid = document.getElementById('writingsGrid');
+    if (!writingsGrid) return;
+    
+    writingsGrid.innerHTML = articles.map(article => `
+        <article class="writing-card">
+            <div class="writing-category">${article.category}</div>
+            <h3>${article.title}</h3>
+            <p>${article.excerpt}</p>
+            <div class="writing-meta">
+                <span><i class="fas fa-calendar"></i> ${article.date}</span>
+                <span><i class="fas fa-clock"></i> ${article.readTime}</span>
+            </div>
+            <a href="${article.link}" class="writing-link">
+                Devamını Oku <i class="fas fa-arrow-right"></i>
+            </a>
+        </article>
+    `).join('');
+}
+
+// Counter Animation
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 100;
+    const duration = 2000;
+    const stepTime = duration / 100;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, stepTime);
+}
+
+// Intersection Observer for counters
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+};
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const section = entry.target;
+            
+            const projectsCount = section.querySelector('#projectsCount');
+            const projectViews = section.querySelector('#projectViews');
+            const articlesCount = section.querySelector('#articlesCount');
+            const viewsCount = section.querySelector('#viewsCount');
+            
+            if (projectsCount && !projectsCount.classList.contains('animated')) {
+                animateCounter(projectsCount, 15);
+                projectsCount.classList.add('animated');
+            }
+            if (projectViews && !projectViews.classList.contains('animated')) {
+                animateCounter(projectViews, 1000);
+                projectViews.classList.add('animated');
+            }
+            if (articlesCount && !articlesCount.classList.contains('animated')) {
+                animateCounter(articlesCount, 25);
+                articlesCount.classList.add('animated');
+            }
+            if (viewsCount && !viewsCount.classList.contains('animated')) {
+                animateCounter(viewsCount, 5000);
+                viewsCount.classList.add('animated');
+            }
+            
+            counterObserver.unobserve(section);
+        }
+    });
+}, observerOptions);
+
+// Observe stats sections
+document.querySelectorAll('.stats-container').forEach(stat => {
+    counterObserver.observe(stat);
+});
+
+// Contact Form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        alert('Mesajınız alındı! En kısa sürede dönüş yapacağım.');
+        contactForm.reset();
+    }
+    
+    contactForm.addEventListener('submit', handleFormSubmit);
+}
+
+// Smooth Scroll for all links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    function handleSmoothScroll(e) {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+    
+    anchor.addEventListener('click', handleSmoothScroll);
+    anchor.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        handleSmoothScroll(e);
+    });
+});
+
+// Hero buttons - Enhanced touch support
+document.querySelectorAll('.hero-buttons .btn').forEach(btn => {
+    btn.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.98)';
+    }, {passive: true});
+    
+    btn.addEventListener('touchend', function(e) {
+        this.style.transform = 'scale(1)';
+        // Let the href work naturally
+    }, {passive: true});
+});
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects();
+    loadArticles();
+    
+    // Add active class styles for touch feedback
+    const style = document.createElement('style');
+    style.textContent = `
+        .active-touch {
+            opacity: 0.8 !important;
+            transform: scale(0.95) !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Add touch feedback to all interactive elements
+    document.querySelectorAll('button, .btn, a.btn, .mobile-nav-link, .project-link, .writing-link, .social-links-contact a').forEach(el => {
+        el.addEventListener('touchstart', function() {
             this.classList.add('active-touch');
         }, {passive: true});
         
-        button.addEventListener('touchend', function() {
+        el.addEventListener('touchend', function() {
             setTimeout(() => {
                 this.classList.remove('active-touch');
             }, 200);
         }, {passive: true});
         
-        button.addEventListener('touchcancel', function() {
+        el.addEventListener('touchcancel', function() {
             this.classList.remove('active-touch');
         }, {passive: true});
     });
-    
-    // Theme Toggle - Enhanced for mobile
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.click();
-        }, {passive: false});
-    }
-    
-    // Mobile Menu Toggle - Enhanced
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-            
-            mobileNav.classList.toggle('active');
-            mobileNavBackdrop.classList.toggle('active');
-            this.classList.toggle('active');
-        }, {passive: false});
-    }
-    
-    // Mobile Nav Links
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            const href = this.getAttribute('href');
-            const target = document.querySelector(href);
-            
-            // Close menu
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            
-            mobileNav.classList.remove('active');
-            mobileNavBackdrop.classList.remove('active');
-            mobileMenuToggle.classList.remove('active');
-            
-            // Smooth scroll to target
-            if (target) {
-                setTimeout(() => {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 300);
-            }
-        }, {passive: false});
-    });
-    
-    // Carousel buttons - Enhanced
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            currentSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
-            updateCarousel();
-            resetAutoPlay();
-        }, {passive: false});
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-            resetAutoPlay();
-        }, {passive: false});
-    }
-    
-    // Timeline buttons - Enhanced
-    const timelinePrev = document.getElementById('timelinePrev');
-    const timelineNext = document.getElementById('timelineNext');
-    const timelineScroll = document.getElementById('timelineScroll');
-    
-    if (timelinePrev && timelineScroll) {
-        timelinePrev.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            timelineScroll.scrollBy({
-                left: -400,
-                behavior: 'smooth'
-            });
-        }, {passive: false});
-    }
-    
-    if (timelineNext && timelineScroll) {
-        timelineNext.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            timelineScroll.scrollBy({
-                left: 400,
-                behavior: 'smooth'
-            });
-        }, {passive: false});
-    }
-    
-    // Carousel indicators
-    const indicators = document.querySelectorAll('.indicator');
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            currentSlide = index;
-            updateCarousel();
-            resetAutoPlay();
-        }, {passive: false});
-    });
-    
-    // Contact form submit
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Mesajınız alındı! En kısa sürede dönüş yapacağım.');
-            this.reset();
-        });
-    }
-}
-
-// Initialize on load
-document.addEventListener('DOMContentLoaded', initApp);
-// initCursorEffect(); // Uncomment for custom cursor
+});

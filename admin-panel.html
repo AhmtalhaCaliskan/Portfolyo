@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Admin Panel Container -->
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Admin Panel</h1>
+            <div class="header-actions">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Çıkış Yap</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <!-- Tab Navigation -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="projects">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projeler</span>
+                </button>
+                <button class="tab-btn" data-tab="blogs">
+                    <i class="fas fa-blog"></i>
+                    <span>Yazılar</span>
+                </button>
+            </div>
+
+            <!-- Projects Tab -->
+            <div class="tab-content active" id="projects-tab">
+                <div class="content-header">
+                    <h2><i class="fas fa-project-diagram"></i> Yeni Proje Ekle</h2>
+                    <p>Portfolyo'nuza yeni bir proje ekleyin</p>
+                </div>
+
+                <form class="add-form" id="addProjectForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectTitle">
+                                <i class="fas fa-heading"></i>
+                                Proje Başlığı
+                            </label>
+                            <input type="text" id="projectTitle" placeholder="Örn: E-Commerce Platform" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectCategory">
+                                <i class="fas fa-tag"></i>
+                                Kategori
+                            </label>
+                            <select id="projectCategory" required>
+                                <option value="">Seçin...</option>
+                                <option value="web">Web Development</option>
+                                <option value="mobile">Mobile Development</option>
+                                <option value="backend">Backend Development</option>
+                                <option value="cybersecurity">Cybersecurity</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDescription">
+                            <i class="fas fa-align-left"></i>
+                            Açıklama
+                        </label>
+                        <textarea id="projectDescription" rows="4" placeholder="Proje hakkında kısa açıklama..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectTech">
+                            <i class="fas fa-code"></i>
+                            Teknolojiler (virgülle ayırın)
+                        </label>
+                        <input type="text" id="projectTech" placeholder="Örn: React, Node.js, MongoDB" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectImage">
+                                <i class="fas fa-image"></i>
+                                Görsel URL
+                            </label>
+                            <input type="url" id="projectImage" placeholder="https://..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectGithub">
+                                <i class="fab fa-github"></i>
+                                GitHub URL (opsiyonel)
+                            </label>
+                            <input type="url" id="projectGithub" placeholder="https://github.com/...">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectViews">
+                                <i class="fas fa-eye"></i>
+                                Görüntüleme Sayısı
+                            </label>
+                            <input type="number" id="projectViews" value="0" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectLikes">
+                                <i class="fas fa-heart"></i>
+                                Beğeni Sayısı
+                            </label>
+                            <input type="number" id="projectLikes" value="0" min="0">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>Projeyi Ekle</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Blogs Tab -->
+            <div class="tab-content" id="blogs-tab">
+                <div class="content-header">
+                    <h2><i class="fas fa-blog"></i> Yeni Yazı Ekle</h2>
+                    <p>Blog bölümüne yeni bir yazı ekleyin</p>
+                </div>
+
+                <form class="add-form" id="addBlogForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="blogTitle">
+                                <i class="fas fa-heading"></i>
+                                Yazı Başlığı
+                            </label>
+                            <input type="text" id="blogTitle" placeholder="Örn: Node.js Performance Optimizasyonu" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blogCategory">
+                                <i class="fas fa-tag"></i>
+                                Kategori
+                            </label>
+                            <select id="blogCategory" required>
+                                <option value="">Seçin...</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="security">Security</option>
+                                <option value="tutorial">Tutorial</option>
+                                <option value="career">Career</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogExcerpt">
+                            <i class="fas fa-align-left"></i>
+                            Kısa Açıklama
+                        </label>
+                        <textarea id="blogExcerpt" rows="3" placeholder="Yazı hakkında kısa özet..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogContent">
+                            <i class="fas fa-file-alt"></i>
+                            İçerik
+                        </label>
+                        <textarea id="blogContent" rows="8" placeholder="Yazının tam içeriği..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogTags">
+                            <i class="fas fa-tags"></i>
+                            Etiketler (virgülle ayırın)
+                        </label>
+                        <input type="text" id="blogTags" placeholder="Örn: Node.js, Performance, Backend" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="blogImage">
+                                <i class="fas fa-image"></i>
+                                Görsel URL
+                            </label>
+                            <input type="url" id="blogImage" placeholder="https://..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blogReadTime">
+                                <i class="fas fa-clock"></i>
+                                Okuma Süresi (dakika)
+                            </label>
+                            <input type="number" id="blogReadTime" value="5" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogAuthor">
+                            <i class="fas fa-user"></i>
+                            Yazar
+                        </label>
+                        <input type="text" id="blogAuthor" value="Ahmet Talha Çalışkan" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>Yazıyı Ekle</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/admin-panel.js"></script>
+</body>
+</html>
