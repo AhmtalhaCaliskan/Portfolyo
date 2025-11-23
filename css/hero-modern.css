@@ -746,13 +746,35 @@
     .hero-buttons {
         flex-direction: column;
         width: 100%;
-        gap: 0.75rem;
+        gap: 1rem;
     }
-
-    .hero-buttons .btn {
+    
+    .btn {
         width: 100%;
+        padding: 16px 24px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
         justify-content: center;
-        padding: 0.875rem 1.5rem;
+        gap: 10px;
+        border-radius: 12px;
+        border: none;
+        background: var(--accent);
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+    
+    .btn i {
+        pointer-events: none;
     }
 
     .hero-stats-mini {

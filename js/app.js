@@ -1827,26 +1827,176 @@ function animateValue(element, start, end, duration) {
 
 // Prevent horizontal scroll on mobile
 document.addEventListener('DOMContentLoaded', () => {
-    // Prevent body scroll issues
     document.body.style.overflowX = 'hidden';
     document.documentElement.style.overflowX = 'hidden';
     
-    // Check for elements causing overflow
-    function checkOverflow() {
-        const bodyWidth = document.body.offsetWidth;
-        const elements = document.querySelectorAll('*');
+    // Fix iOS button tap delay
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    
+    // Prevent double-tap zoom on buttons
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+    
+    // Enhanced button click handlers for mobile
+    enhanceMobileButtons();
+});
+
+// Enhanced Mobile Button Handling
+function enhanceMobileButtons() {
+    // All buttons
+    const buttons = document.querySelectorAll('button, .btn, a.btn, .carousel-btn, .timeline-nav-btn');
+    
+    buttons.forEach(button => {
+        // Add active class on touch
+        button.addEventListener('touchstart', function() {
+            this.classList.add('active-touch');
+        }, {passive: true});
         
-        elements.forEach(el => {
-            if (el.offsetWidth > bodyWidth) {
-                el.style.maxWidth = '100%';
-            }
-        });
+        button.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.classList.remove('active-touch');
+            }, 200);
+        }, {passive: true});
+        
+        button.addEventListener('touchcancel', function() {
+            this.classList.remove('active-touch');
+        }, {passive: true});
+    });
+    
+    // Theme Toggle - Enhanced for mobile
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.click();
+        }, {passive: false});
     }
     
-    // Run on load and resize
-    checkOverflow();
-    window.addEventListener('resize', checkOverflow);
-});
+    // Mobile Menu Toggle - Enhanced
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+            
+            mobileNav.classList.toggle('active');
+            mobileNavBackdrop.classList.toggle('active');
+            this.classList.toggle('active');
+        }, {passive: false});
+    }
+    
+    // Mobile Nav Links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            const target = document.querySelector(href);
+            
+            // Close menu
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            
+            mobileNav.classList.remove('active');
+            mobileNavBackdrop.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            
+            // Smooth scroll to target
+            if (target) {
+                setTimeout(() => {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 300);
+            }
+        }, {passive: false});
+    });
+    
+    // Carousel buttons - Enhanced
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            currentSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+            updateCarousel();
+            resetAutoPlay();
+        }, {passive: false});
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+            resetAutoPlay();
+        }, {passive: false});
+    }
+    
+    // Timeline buttons - Enhanced
+    const timelinePrev = document.getElementById('timelinePrev');
+    const timelineNext = document.getElementById('timelineNext');
+    const timelineScroll = document.getElementById('timelineScroll');
+    
+    if (timelinePrev && timelineScroll) {
+        timelinePrev.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            timelineScroll.scrollBy({
+                left: -400,
+                behavior: 'smooth'
+            });
+        }, {passive: false});
+    }
+    
+    if (timelineNext && timelineScroll) {
+        timelineNext.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            timelineScroll.scrollBy({
+                left: 400,
+                behavior: 'smooth'
+            });
+        }, {passive: false});
+    }
+    
+    // Carousel indicators
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            currentSlide = index;
+            updateCarousel();
+            resetAutoPlay();
+        }, {passive: false});
+    });
+    
+    // Contact form submit
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mesajınız alındı! En kısa sürede dönüş yapacağım.');
+            this.reset();
+        });
+    }
+}
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', initApp);

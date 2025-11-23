@@ -201,6 +201,15 @@ body::after {
     box-shadow: 0 0 15px var(--glow);
 }
 
+/* Button Base Styles - Mobile Friendly */
+button, .btn, a.btn {
+    -webkit-tap-highlight-color: rgba(124, 58, 237, 0.3);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
 /* Hero Section - with stars */
 .hero {
     min-height: 100vh;
@@ -2419,6 +2428,7 @@ section {
 /* Light theme aurora - Professional Gray */
 [data-theme="light"] .aurora::before {
     background: 
+        
         radial-gradient(ellipse at 30% 50%, rgba(190, 195, 200, 0.3) 0%, transparent 50%),
         radial-gradient(ellipse at 70% 50%, rgba(170, 175, 180, 0.25) 0%, transparent 50%);
 }
