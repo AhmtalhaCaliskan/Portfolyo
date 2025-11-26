@@ -8,7 +8,7 @@ async function initApp() {
         showLoadingScreen();
         
         // Load data from JSON
-        const response = await fetch('data/data.json');
+        const response = await fetch('./data/data.json');
         portfolioData = await response.json();
         
         // Initialize all components
