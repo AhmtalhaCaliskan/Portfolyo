@@ -42,12 +42,21 @@ body {
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* iOS animasyon optimizasyonu */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
 }
 
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* iOS için momentum scrolling */
+    -webkit-overflow-scrolling: touch;
 }
 
 body::before {
@@ -383,6 +392,10 @@ body.light-theme::after {
     display: inline-block;
     animation: blinkCursor 0.8s step-end infinite;
     text-shadow: 0 0 20px rgba(107, 33, 168, 0.3);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 @keyframes blinkCursor {
@@ -1902,11 +1915,17 @@ html {
     opacity: 0.3;
     transform: scale(0.85) rotateY(15deg);
     filter: blur(3px);
+    /* iOS optimizasyonu */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
 
 .service-card.active {
     opacity: 1;
-    transform: scale(1) rotateY(0deg);
+    transform: scale(1) rotateY(0deg) translateZ(0);
     filter: blur(0);
     z-index: 10;
 }
@@ -2416,6 +2435,12 @@ html {
     overflow: hidden;
     cursor: pointer;
     animation: cardFadeIn 0.6s ease backwards;
+    /* iOS optimizasyonu */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
 
 .stat-card:nth-child(1) {
@@ -2801,6 +2826,12 @@ body.light-theme .stat-number {
     padding: 0 20px;
     position: relative;
     animation: projectCardFloat 6s ease-in-out infinite;
+    /* iOS optimizasyonu */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
 .project-card::before {
@@ -3800,6 +3831,12 @@ body.light-theme .stat-number {
     position: relative;
     overflow: hidden;
     animation: cardFloat 6s ease-in-out infinite;
+    /* iOS optimizasyonu */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
 .contact-info-card:nth-child(1) {
@@ -5080,6 +5117,16 @@ body.light-theme .footer-text {
 
     .hero-title {
         font-size: 1.3rem;
+    }
+
+    .name-text {
+        font-size: 1.5rem;
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
+        line-height: 1.4;
+        max-width: 90vw;
+        letter-spacing: 1px;
     }
 
     .typing-container {
