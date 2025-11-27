@@ -269,6 +269,25 @@ body.light-theme .login-btn:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
+    /* Yavaşlatılmış animasyonlar mobil için */
+    .login-box {
+        animation-duration: 0.9s !important; /* 0.6s yerine 0.9s */
+    }
+    
+    .login-icon {
+        animation-duration: 4.5s !important; /* 3s yerine 4.5s */
+    }
+    
+    .login-btn,
+    .back-btn,
+    .forgot-link {
+        transition-duration: 0.5s !important; /* 0.3s/0.4s yerine 0.5s */
+    }
+    
+    .error-message {
+        animation-duration: 0.8s !important; /* 0.5s yerine 0.8s */
+    }
+    
     .login-box {
         padding: 40px 30px;
     }

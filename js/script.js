@@ -325,11 +325,11 @@ if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
     const serviceCards = servicesSlider.querySelectorAll('.service-card');
     let currentServiceIndex = 0;
     const totalServices = serviceCards.length;
-    let autoSlideInterval;
 
     // Create dots
     function createDots() {
         servicesDots.innerHTML = '';
+        // Her kart için bir dot (mobil/desktop aynı)
         for (let i = 0; i < totalServices; i++) {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -356,12 +356,18 @@ if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
 
     // Go to specific slide
     function goToSlide(index) {
+        // Index sınırlandır
+        if (index >= totalServices) {
+            index = 0;
+        } else if (index < 0) {
+            index = totalServices - 1;
+        }
+        
         currentServiceIndex = index;
         const offset = -index * 100;
         servicesSlider.style.transform = `translateX(${offset}%)`;
         updateDots();
         updateActiveCard();
-        resetAutoSlide();
     }
 
     // Previous slide
@@ -382,25 +388,7 @@ if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
         }
     });
 
-    // Auto slide
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            if (currentServiceIndex < totalServices - 1) {
-                goToSlide(currentServiceIndex + 1);
-            } else {
-                goToSlide(0);
-            }
-        }, 5000); // Change slide every 5 seconds
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    function resetAutoSlide() {
-        stopAutoSlide();
-        startAutoSlide();
-    }
+    // Auto slide removed - manual control only
 
     // Keyboard navigation for services
     document.addEventListener('keydown', (e) => {
@@ -414,17 +402,27 @@ if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
     // Touch swipe support for services
     let touchStartX = 0;
     let touchEndX = 0;
+    let isDragging = false;
 
-    servicesSlider.addEventListener('touchstart', (e) => {
+    const sliderWrapper = servicesSlider.parentElement;
+
+    sliderWrapper.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-        stopAutoSlide();
-    });
+        isDragging = true;
+    }, { passive: true });
 
-    servicesSlider.addEventListener('touchend', (e) => {
+    sliderWrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        // Önizleme için hafif hareket (opsiyonel)
+        touchEndX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    sliderWrapper.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
-        resetAutoSlide();
-    });
+    }, { passive: true });
 
     function handleSwipe() {
         const swipeThreshold = 50;
@@ -449,14 +447,23 @@ if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
         }
     }
 
-    // Pause auto-slide when hovering over cards
-    servicesSlider.addEventListener('mouseenter', stopAutoSlide);
-    servicesSlider.addEventListener('mouseleave', startAutoSlide);
+    // Auto-slide removed for better user control
+
+    // Window resize handler - dots'ları yeniden oluştur
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            createDots();
+            // Mevcut slide'ı güncelle
+            goToSlide(currentServiceIndex);
+        }, 250);
+    });
 
     // Initialize
     createDots();
-    startAutoSlide();
     updateActiveCard(); // Set first card as active
+    goToSlide(0); // Start with first card
 }
 
 // Load projects from localStorage and render them

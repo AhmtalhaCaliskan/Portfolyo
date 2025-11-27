@@ -675,6 +675,23 @@
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+    /* Yavaşlatılmış animasyonlar mobil için */
+    .hero-gradient-orb {
+        animation-duration: 30s !important; /* 20s yerine 30s */
+    }
+    
+    .hero-profile-wrapper .profile-ring {
+        animation-duration: 5s !important; /* Daha yavaş ring animasyonu */
+    }
+    
+    .hero-btn {
+        transition-duration: 0.5s !important; /* Daha yavaş hover efekti */
+    }
+    
+    .hero-stat {
+        transition-duration: 0.5s !important;
+    }
+    
     .hero {
         overflow: hidden;
         width: 100%;

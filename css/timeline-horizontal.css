@@ -383,6 +383,19 @@
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+    /* Yavaşlatılmış animasyonlar mobil için */
+    .timeline-scroll-hint {
+        animation-duration: 3s !important; /* 2s yerine 3s */
+    }
+    
+    .timeline-card {
+        transition-duration: 0.5s !important; /* Daha yavaş geçiş */
+    }
+    
+    .timeline-dot {
+        transition-duration: 0.5s !important;
+    }
+    
     .timeline-horizontal {
         overflow: hidden;
         width: 100%;

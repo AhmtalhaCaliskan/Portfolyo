@@ -51,12 +51,16 @@ body {
     perspective: 1000;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling - sadece user action için */
 html {
-    scroll-behavior: smooth;
     overflow-x: hidden;
     /* iOS için momentum scrolling */
     -webkit-overflow-scrolling: touch;
+}
+
+/* Sadece anchor linkler için smooth scroll */
+html:has(:target) {
+    scroll-behavior: smooth;
 }
 
 body::before {
@@ -735,6 +739,11 @@ body.light-theme::after {
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
+}
+
+/* Contact section için mor çizgiyi kaldır */
+.contact-section .section-title::after {
+    display: none;
 }
 
 .section-title::after {
@@ -1885,9 +1894,8 @@ html {
 .services-slider {
     display: flex;
     gap: 0;
-    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
-    transform-style: preserve-3d;
     width: 100%;
     -webkit-user-select: none;
     user-select: none;
@@ -1905,29 +1913,29 @@ html {
     border-radius: 30px;
     padding: 50px;
     position: relative;
-    transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 550px;
-    opacity: 0.3;
-    transform: scale(0.85) rotateY(15deg);
-    filter: blur(3px);
-    /* iOS optimizasyonu */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    will-change: transform, opacity;
+    opacity: 0.5;
+    transform: scale(0.9);
+    filter: blur(2px);
+    pointer-events: none;
 }
 
 .service-card.active {
     opacity: 1;
-    transform: scale(1) rotateY(0deg) translateZ(0);
+    transform: scale(1);
     filter: blur(0);
     z-index: 10;
+    pointer-events: auto;
+}
+
+.service-card.active:hover {
+    transform: scale(1.02) translateY(-5px);
 }
 
 .service-card::before {
@@ -1944,13 +1952,7 @@ html {
     z-index: -1;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
-    box-shadow: 0 30px 80px rgba(107, 33, 168, 0.5);
-}
-
-.service-card:hover::before {
+.service-card.active:hover::before {
     opacity: 1;
 }
 
@@ -2144,56 +2146,43 @@ html {
     .services-slider-wrapper {
         margin-top: 90px;
         padding: 20px 0;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(124, 58, 237, 0.5) rgba(20, 16, 30, 0.3);
+        overflow: hidden; /* scroll yerine hidden - JavaScript ile kontrol edeceğiz */
+        position: relative;
     }
 
     .services-slider-wrapper::-webkit-scrollbar {
-        height: 8px;
-    }
-
-    .services-slider-wrapper::-webkit-scrollbar-track {
-        background: rgba(20, 16, 30, 0.3);
-        border-radius: 10px;
-    }
-
-    .services-slider-wrapper::-webkit-scrollbar-thumb {
-        background: rgba(124, 58, 237, 0.5);
-        border-radius: 10px;
-    }
-
-    .services-slider-wrapper::-webkit-scrollbar-thumb:hover {
-        background: rgba(124, 58, 237, 0.7);
+        display: none; /* scrollbar'ı gizle */
     }
 
     .services-slider {
         display: flex;
         flex-wrap: nowrap;
-        gap: 20px;
-        padding: 0 20px;
+        gap: 0;
+        padding: 0;
+        width: fit-content;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .service-card {
         padding: 30px 20px;
         min-height: auto;
-        min-width: calc(100vw - 80px);
-        max-width: calc(100vw - 80px);
-        margin: 0 auto;
+        min-width: 100vw;
+        max-width: 100vw;
+        width: 100vw;
+        margin: 0;
         flex-shrink: 0;
-        scroll-snap-align: center;
     }
 
     .service-card.active {
-        transform: scale(1) rotateY(0deg);
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
     }
 
     .service-card:not(.active) {
-        transform: scale(0.9) rotateY(0deg);
-        opacity: 0.5;
+        transform: scale(0.85);
+        opacity: 0.3;
+        filter: blur(1px);
     }
 
     .service-icon-wrapper {
@@ -5297,10 +5286,39 @@ body.light-theme .footer-text {
         transform: translateY(0);
     }
 
-    /* Disable complex animations on mobile for performance */
+    /* Slow down animations on mobile for better UX */
     * {
-        animation-duration: 0.3s !important;
-        transition-duration: 0.3s !important;
+        animation-duration: 0.8s !important;
+        transition-duration: 0.6s !important;
+    }
+    
+    @keyframes backgroundPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.95; }
+    }
+    
+    @keyframes backgroundShift {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(10px); }
+    }
+    
+    /* Yavaşlatılmış profil ring animasyonları */
+    .profile-ring {
+        animation-duration: 5s !important;
+    }
+    
+    /* Yavaşlatılmış typing animasyonu */
+    .typing-container {
+        animation-duration: 1.2s !important;
+    }
+    
+    /* Yavaşlatılmış hover efektleri */
+    .btn,
+    .project-card,
+    .blog-card,
+    .service-card,
+    .skill-card {
+        transition-duration: 0.5s !important;
     }
 }
 

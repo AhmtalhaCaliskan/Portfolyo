@@ -414,6 +414,13 @@
 }
 
 @media (max-width: 768px) {
+    /* Yavaşlatılmış animasyonlar mobil için */
+    .minimal-section,
+    .skill-tag-minimal,
+    .cert-item {
+        transition-duration: 0.5s !important; /* 0.3s yerine 0.5s */
+    }
+    
     .about-minimal {
         overflow: hidden;
         width: 100%;

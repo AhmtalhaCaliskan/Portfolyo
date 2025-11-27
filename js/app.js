@@ -1,9 +1,38 @@
 // Global data object
 let portfolioData = null;
 
+// Mobil cihaz kontrolü ve animasyon hızı ayarlama
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+        || window.innerWidth <= 768;
+}
+
+// Mobil için animasyon hızlarını ayarla
+function adjustAnimationSpeedsForMobile() {
+    if (isMobileDevice()) {
+        // CSS değişkenlerini değiştir
+        document.documentElement.style.setProperty('--animation-speed-multiplier', '1.5');
+        
+        // Tüm animasyon sürelerini yavaşlat
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                * {
+                    animation-duration: calc(var(--original-duration, 1s) * 1.5) !important;
+                    transition-duration: calc(var(--original-transition, 0.3s) * 1.5) !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
 // Initialize the application
 async function initApp() {
     try {
+        // Mobil animasyon ayarlarını uygula
+        adjustAnimationSpeedsForMobile();
+        
         // Show loading screen
         showLoadingScreen();
         
@@ -145,7 +174,10 @@ function startTypewriterEffect() {
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typingSpeed = 100;
+    
+    // Mobil için daha yavaş typing hızı
+    const speedMultiplier = isMobileDevice() ? 1.5 : 1;
+    let typingSpeed = 100 * speedMultiplier;
     
     function type() {
         const currentText = texts[textIndex];
@@ -154,24 +186,24 @@ function startTypewriterEffect() {
             // Deleting
             typingElement.textContent = currentText.substring(0, charIndex - 1);
             charIndex--;
-            typingSpeed = 50;
+            typingSpeed = 50 * speedMultiplier;
         } else {
             // Typing
             typingElement.textContent = currentText.substring(0, charIndex + 1);
             charIndex++;
-            typingSpeed = 100;
+            typingSpeed = 100 * speedMultiplier;
         }
         
         // Check if word is complete
         if (!isDeleting && charIndex === currentText.length) {
             // Pause at end
-            typingSpeed = 2000;
+            typingSpeed = 2000 * speedMultiplier;
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             // Move to next word
             isDeleting = false;
             textIndex = (textIndex + 1) % texts.length;
-            typingSpeed = 500;
+            typingSpeed = 500 * speedMultiplier;
         }
         
         setTimeout(type, typingSpeed);
