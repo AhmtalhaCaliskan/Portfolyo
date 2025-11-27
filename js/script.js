@@ -315,36 +315,19 @@ if (timelineTrack && prevBtn && nextBtn && timelineWrapper) {
     timelineWrapper.style.cursor = 'grab';
 }
 
-// Services Slider
+// Services Slider - Desktop: Button control, Mobile: Scroll
 const servicesSlider = document.getElementById('servicesSlider');
 const servicePrevBtn = document.getElementById('servicePrevBtn');
 const serviceNextBtn = document.getElementById('serviceNextBtn');
-const servicesDots = document.getElementById('servicesDots');
 
-if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
+if (servicesSlider && servicePrevBtn && serviceNextBtn) {
     const serviceCards = servicesSlider.querySelectorAll('.service-card');
     let currentServiceIndex = 0;
     const totalServices = serviceCards.length;
 
-    // Create dots
-    function createDots() {
-        servicesDots.innerHTML = '';
-        // Her kart için bir dot (mobil/desktop aynı)
-        for (let i = 0; i < totalServices; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            servicesDots.appendChild(dot);
-        }
-    }
-
-    // Update dots
-    function updateDots() {
-        const dots = servicesDots.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentServiceIndex);
-        });
+    // Check if desktop
+    function isDesktop() {
+        return window.innerWidth > 768;
     }
 
     // Update active card
@@ -356,7 +339,8 @@ if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
 
     // Go to specific slide
     function goToSlide(index) {
-        // Index sınırlandır
+        if (!isDesktop()) return; // Mobilde JavaScript kontrolü yok
+        
         if (index >= totalServices) {
             index = 0;
         } else if (index < 0) {
@@ -366,104 +350,50 @@ if (servicesSlider && servicePrevBtn && serviceNextBtn && servicesDots) {
         currentServiceIndex = index;
         const offset = -index * 100;
         servicesSlider.style.transform = `translateX(${offset}%)`;
-        updateDots();
         updateActiveCard();
     }
 
     // Previous slide
     servicePrevBtn.addEventListener('click', () => {
-        if (currentServiceIndex > 0) {
-            goToSlide(currentServiceIndex - 1);
-        } else {
-            goToSlide(totalServices - 1);
-        }
+        if (!isDesktop()) return;
+        goToSlide(currentServiceIndex - 1);
     });
 
     // Next slide
     serviceNextBtn.addEventListener('click', () => {
-        if (currentServiceIndex < totalServices - 1) {
-            goToSlide(currentServiceIndex + 1);
-        } else {
-            goToSlide(0);
-        }
+        if (!isDesktop()) return;
+        goToSlide(currentServiceIndex + 1);
     });
 
-    // Auto slide removed - manual control only
-
-    // Keyboard navigation for services
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
+        if (!isDesktop()) return;
         if (e.key === 'ArrowLeft') {
-            servicePrevBtn.click();
+            goToSlide(currentServiceIndex - 1);
         } else if (e.key === 'ArrowRight') {
-            serviceNextBtn.click();
+            goToSlide(currentServiceIndex + 1);
         }
     });
 
-    // Touch swipe support for services
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let isDragging = false;
-
-    const sliderWrapper = servicesSlider.parentElement;
-
-    sliderWrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        isDragging = true;
-    }, { passive: true });
-
-    sliderWrapper.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        // Önizleme için hafif hareket (opsiyonel)
-        touchEndX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    sliderWrapper.addEventListener('touchend', (e) => {
-        if (!isDragging) return;
-        isDragging = false;
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left - next
-                if (currentServiceIndex < totalServices - 1) {
-                    goToSlide(currentServiceIndex + 1);
-                } else {
-                    goToSlide(0);
-                }
-            } else if (diff < 0) {
-                // Swipe right - previous
-                if (currentServiceIndex > 0) {
-                    goToSlide(currentServiceIndex - 1);
-                } else {
-                    goToSlide(totalServices - 1);
-                }
-            }
-        }
+    // Initialize desktop mode
+    if (isDesktop()) {
+        goToSlide(0);
+        updateActiveCard();
     }
 
-    // Auto-slide removed for better user control
-
-    // Window resize handler - dots'ları yeniden oluştur
+    // Handle window resize
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            createDots();
-            // Mevcut slide'ı güncelle
-            goToSlide(currentServiceIndex);
+            if (isDesktop()) {
+                goToSlide(currentServiceIndex);
+            } else {
+                // Reset transform for mobile scroll
+                servicesSlider.style.transform = '';
+            }
         }, 250);
     });
-
-    // Initialize
-    createDots();
-    updateActiveCard(); // Set first card as active
-    goToSlide(0); // Start with first card
 }
 
 // Load projects from localStorage and render them
